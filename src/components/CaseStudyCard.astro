@@ -1,0 +1,35 @@
+---
+import { ArrowDown, ArrowUp } from "@lucide/astro";
+import type { CaseStudy } from "../data/caseStudies";
+
+interface Props {
+  study: CaseStudy;
+}
+
+const { study } = Astro.props as Props;
+const ArrowIcon = study.changeDirection === 'down' ? ArrowDown : ArrowUp;
+---
+
+<a
+  href={`/results/${study.slug}`}
+  class="fade-in group flex flex-col bg-white rounded-2xl border border-forest-900/8 p-6 hover:shadow-soft hover:-translate-y-1 transition-all"
+>
+  <div class="flex items-center justify-between mb-5">
+    <span class="text-[11px] font-600 tracking-[0.15em] uppercase text-forest-500">{study.condition}</span>
+    <span class:list={["inline-flex items-center gap-1 rounded-full px-3 py-1 text-sm font-700", study.changeIsGood ? "bg-gold-100 text-gold-700" : "bg-clay-100 text-clay-600"]}>
+      <ArrowIcon class="w-3.5 h-3.5" stroke-width={3} />
+      {study.changePercent}%
+    </span>
+  </div>
+
+  <h3 class="font-display text-xl font-700 text-forest-950 mb-2 leading-snug">{study.headline}</h3>
+  <p class="text-sm text-forest-700 leading-relaxed mb-5 flex-1">{study.cardBlurb}</p>
+
+  <div class="flex items-center justify-between text-xs text-forest-500">
+    <span>{study.clientLabel} · {study.duration}</span>
+    <span class="inline-flex items-center gap-1.5 text-forest-900 font-600 group-hover:text-gold-600 transition-colors">
+      Read the case study
+      <span class="transition-transform group-hover:translate-x-1" aria-hidden="true">→</span>
+    </span>
+  </div>
+</a>

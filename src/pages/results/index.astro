@@ -1,0 +1,68 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import SectionHeader from "../../components/SectionHeader.astro";
+import CaseStudyCard from "../../components/CaseStudyCard.astro";
+import CTASection from "../../components/CTASection.astro";
+import { CASE_STUDIES, DISCLAIMER } from "../../data/caseStudies";
+import { site } from "../../data/site";
+---
+
+<Layout
+  title={`Real Results & Case Studies | ${site.brandName}`}
+  description={`Real, measured transformations from ${site.founderName}'s clients: tracked before-and-after data, shared with consent.`}
+  pageUrl="https://auraandolives.com/results/"
+  ogImage="https://auraandolives.com/assets/images/og/results-og.webp"
+>
+  <section
+    class="hero-bg hero-photo-bg pt-28 pb-16 sm:pt-36 sm:pb-20"
+    style="--hero-image: url('/assets/images/heroes/results-hero.webp'); --hero-position: center 25%;"
+  >
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+      <div
+        class="fade-in inline-flex items-center gap-2 mb-5 rounded-full border border-gold-400/30 bg-gold-400/10 px-4 py-1.5"
+      >
+        <span class="h-1.5 w-1.5 rounded-full bg-gold-400"></span>
+        <span class="text-xs font-600 tracking-[0.15em] uppercase text-gold-300"
+          >Real Results</span
+        >
+      </div>
+      <h1
+        class="fade-in font-display text-4xl sm:text-5xl font-800 leading-[1.1] text-cream-50"
+      >
+        Transformation you can measure.
+      </h1>
+      <p
+        class="fade-in mt-6 text-cream-200/85 leading-relaxed text-base sm:text-lg"
+      >
+        Every case study here is real client data, tracked over time and shared
+        with their explicit consent.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-20 sm:py-28 bg-cream-100">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <SectionHeader
+        eyebrow="Case Studies"
+        title="Browse real, measured transformations"
+        description="Each story shows the method in action: condition, timeline, and the exact numbers that changed."
+      />
+
+      <div class="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {CASE_STUDIES.map((study) => <CaseStudyCard study={study} />)}
+      </div>
+
+      <p
+        class="fade-in text-center mt-14 max-w-2xl mx-auto text-xs text-forest-500 leading-relaxed"
+      >
+        {DISCLAIMER}
+      </p>
+    </div>
+  </section>
+
+  <CTASection
+    heading="Want results like these?"
+    title="Your transformation could be the next case study."
+    description="Tell Reshma where you're starting from. She'll map out exactly how the method applies to you."
+  />
+</Layout>

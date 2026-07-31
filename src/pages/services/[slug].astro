@@ -1,0 +1,247 @@
+---
+import { Flower2, Wind, Apple, Dumbbell, Check } from "@lucide/astro";
+import Layout from "../../layouts/Layout.astro";
+import FaqSection from "../../components/FaqSection.astro";
+import CTASection from "../../components/CTASection.astro";
+import { SERVICES, getAllServiceSlugs, getServiceBySlug, type Service } from "../../data/services";
+import { site, buildWhatsAppLink } from "../../data/site";
+
+export async function getStaticPaths() {
+  return getAllServiceSlugs().map((slug) => ({
+    params: { slug },
+    props: { service: getServiceBySlug(slug) },
+  }));
+}
+
+interface Props {
+  service: Service | undefined;
+}
+
+const { service } = Astro.props as Props;
+
+if (!service) {
+  return Astro.redirect("/services");
+}
+
+const pageTitle = `${service.name} | ${site.brandName}`;
+const pageDesc = `${service.tagline}. ${service.heroDescription}`;
+const pageUrl = `${site.siteUrl}/services/${service.slug}`;
+
+const PILLAR_ICONS: Record<string, any> = { Yoga: Flower2, Pranayama: Wind, "Quantified Nutrition Diet": Apple, "Strength Training": Dumbbell };
+
+const waLink = buildWhatsAppLink(`Hi Reshma, I'd like to know more about ${service.name}.`);
+
+const otherServices = SERVICES.filter((s) => s.slug !== service.slug);
+
+const SERVICE_HERO_MEDIA: Record<string, { src: string; alt: string; position?: string }> = {
+  '90-day-transformation-challenge': {
+    src: '/assets/images/services/challenge-hero.webp',
+    alt: 'Reshma leading an energizing yoga-and-strength transformation session with Indian women students.',
+    position: 'center top',
+  },
+  'private-mentorship': {
+    src: '/assets/images/services/mentorship-hero.webp',
+    alt: 'Reshma providing one-on-one posture guidance to a private mentorship client.',
+    position: 'center top',
+  },
+  'certification-program': {
+    src: '/assets/images/services/certification-hero.webp',
+    alt: 'Reshma teaching a professional certification workshop to Indian yoga teachers.',
+    position: 'center top',
+  },
+  'membership-community': {
+    src: '/assets/images/services/membership-hero.webp',
+    alt: 'Reshma sitting with her wellness community in a warm studio circle.',
+    position: 'center top',
+  },
+};
+
+const heroMedia = SERVICE_HERO_MEDIA[service.slug];
+const SERVICE_OG_MEDIA: Record<string, string> = {
+  '90-day-transformation-challenge': 'https://auraandolives.com/assets/images/og/challenge-og.webp',
+  'private-mentorship': 'https://auraandolives.com/assets/images/og/mentorship-og.webp',
+  'certification-program': 'https://auraandolives.com/assets/images/og/certification-og.webp',
+  'membership-community': 'https://auraandolives.com/assets/images/og/membership-og.webp',
+};
+const pageOgImage = SERVICE_OG_MEDIA[service.slug] ?? 'https://auraandolives.com/assets/images/og/services-og.webp';
+---
+
+<Layout title={pageTitle} description={pageDesc} pageUrl={pageUrl} ogImage={pageOgImage} ogType="website">
+
+  <!-- Hero -->
+  <section
+    class:list={['hero-bg pt-28 pb-16 sm:pt-36 sm:pb-20', heroMedia && 'hero-photo-bg']}
+    style={heroMedia ? `--hero-image: url('${heroMedia.src}'); --hero-position: ${heroMedia.position ?? 'center 25%'};` : undefined}
+  >
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <div class="fade-in inline-flex items-center gap-2 mb-5 rounded-full border border-gold-400/30 bg-gold-400/10 px-4 py-1.5">
+        <span class="h-1.5 w-1.5 rounded-full bg-gold-400"></span>
+        <span class="text-xs font-600 tracking-[0.15em] uppercase text-gold-300">{service.category}</span>
+      </div>
+      <h1 class="fade-in font-display text-4xl sm:text-5xl font-800 leading-[1.1] text-cream-50">
+        {service.name}
+      </h1>
+      <p class="fade-in mt-4 text-gold-300 font-600 text-lg">{service.tagline}</p>
+      <p class="fade-in mt-6 text-cream-200/85 leading-relaxed text-base sm:text-lg max-w-2xl mx-auto">
+        {service.heroDescription}
+      </p>
+      <p class="fade-in mt-4 text-xs tracking-wide uppercase text-cream-200/60">{service.format}</p>
+
+      <div class="fade-in mt-8 flex flex-col sm:flex-row gap-3 justify-center">
+        <a
+          href={waLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center justify-center gap-2 bg-gold-500 hover:bg-gold-400 text-forest-950 font-700 px-6 py-3.5 rounded-full transition-colors text-sm"
+        >
+          {service.ctaLabel}
+        </a>
+        <a
+          href="#apply"
+          class="inline-flex items-center justify-center gap-2 border border-cream-50/25 hover:border-cream-50/50 text-cream-50 font-600 px-6 py-3.5 rounded-full transition-colors text-sm"
+        >
+          Get Details on WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Is this for you -->
+  <section class="py-16 sm:py-20 bg-cream-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <h2 class="fade-in font-display text-2xl sm:text-3xl font-700 text-forest-950 text-center mb-4">Is this for you?</h2>
+      <p class="fade-in text-center text-forest-600 mb-10 max-w-xl mx-auto text-sm">This program is built for:</p>
+      <div class="grid sm:grid-cols-2 gap-4">
+        {service.idealFor.map((item) => (
+          <div class="fade-in flex items-start gap-3 bg-cream-100 rounded-2xl p-5">
+            <Check class="w-5 h-5 text-gold-600 shrink-0 mt-0.5" stroke-width={2.5} />
+            <p class="text-sm text-forest-800 leading-relaxed">{item}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Pain points -->
+  <section class="py-16 sm:py-20 bg-cream-100">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      <h2 class="fade-in font-display text-2xl sm:text-3xl font-700 text-forest-950 text-center mb-10">You might recognize yourself here</h2>
+      <div class="space-y-3">
+        {service.painPoints.map((point) => (
+          <div class="fade-in flex items-start gap-3 bg-white rounded-2xl border border-forest-900/8 p-5">
+            <span class="mt-1 shrink-0 h-5 w-5 rounded-full bg-gold-100 text-gold-700 text-xs font-700 flex items-center justify-center">✓</span>
+            <p class="text-sm text-forest-800 leading-relaxed">{point}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Method pillars -->
+  <section class="py-16 sm:py-20 bg-forest-950 text-cream-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <h2 class="fade-in font-display text-2xl sm:text-3xl font-700 text-center mb-3">Built on {site.methodName}</h2>
+      <p class="fade-in text-center text-cream-200/70 text-sm mb-12">The same four fused pillars, applied to this program</p>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        {service.pillars.map((pillar) => {
+          const Icon = PILLAR_ICONS[pillar.title] ?? Flower2;
+          return (
+            <div class="fade-in bg-cream-50/5 border border-cream-50/10 rounded-2xl p-6">
+              <div class="h-10 w-10 rounded-full bg-gold-500 text-forest-950 flex items-center justify-center mb-4">
+                <Icon class="w-5 h-5" stroke-width={2} />
+              </div>
+              <h3 class="font-display text-base font-700 mb-2">{pillar.title}</h3>
+              <p class="text-xs text-cream-200/75 leading-relaxed">{pillar.description}</p>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <!-- What you get + Outcomes -->
+  <section class="py-16 sm:py-20 bg-cream-50">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 grid md:grid-cols-2 gap-10">
+      <div class="fade-in">
+        <h2 class="font-display text-2xl font-700 text-forest-950 mb-6">What you get</h2>
+        <ul class="space-y-3">
+          {service.whatYouGet.map((item) => (
+            <li class="flex items-start gap-3 text-sm text-forest-800 leading-relaxed">
+              <Check class="w-4 h-4 text-gold-600 shrink-0 mt-1" stroke-width={2.5} />
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="fade-in">
+        <h2 class="font-display text-2xl font-700 text-forest-950 mb-6">Outcomes you'll achieve</h2>
+        <ul class="space-y-3">
+          {service.outcomes.map((item) => (
+            <li class="flex items-start gap-3 text-sm text-forest-800 leading-relaxed">
+              <span class="w-4 h-4 rounded-full bg-forest-900 text-gold-400 text-[9px] font-700 flex items-center justify-center shrink-0 mt-1">★</span>
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Curriculum -->
+  {service.curriculum && (
+    <section class="py-16 sm:py-20 bg-cream-100">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6">
+        <h2 class="fade-in font-display text-2xl sm:text-3xl font-700 text-forest-950 text-center mb-12">The journey, phase by phase</h2>
+        <div class="space-y-8">
+          {service.curriculum.map((phase, i) => (
+            <div class="fade-in flex gap-5">
+              <div class="shrink-0 flex flex-col items-center">
+                <span class="h-9 w-9 rounded-full bg-forest-900 text-gold-400 flex items-center justify-center font-display font-700 text-sm">
+                  {i + 1}
+                </span>
+                {i < service.curriculum!.length - 1 && <span class="w-px flex-1 bg-forest-900/15 mt-2"></span>}
+              </div>
+              <div class="pb-2">
+                <h3 class="font-display text-lg font-700 text-forest-950 mb-2">{phase.phase}</h3>
+                <div class="flex flex-wrap gap-2">
+                  {phase.items.map((item) => (
+                    <span class="text-xs font-500 text-forest-700 bg-white border border-forest-900/10 rounded-full px-3 py-1.5">
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <FaqSection faqs={service.faqs} eyebrow="Before You Join" title={`Questions about ${service.shortName}`} bgClass={service.curriculum ? "bg-cream-50" : "bg-cream-100"} />
+
+  <div id="apply">
+    <CTASection
+      context={service.name}
+      heading={service.ctaLabel}
+      title={`Ready to join ${service.shortName}?`}
+      description="Fill this in and Reshma's team will reach out on WhatsApp personally. No bots, no funnels."
+    />
+  </div>
+
+  <!-- Other programs -->
+  <section class="py-16 sm:py-20 bg-cream-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <h2 class="fade-in font-display text-2xl font-700 text-forest-950 text-center mb-10">Explore other programs</h2>
+      <div class="grid sm:grid-cols-3 gap-5">
+        {otherServices.map((s) => (
+          <a href={`/services/${s.slug}`} class="fade-in block bg-white rounded-2xl border border-forest-900/8 p-5 hover:shadow-soft hover:-translate-y-1 transition-all">
+            <span class="text-[10px] font-600 tracking-[0.15em] uppercase text-gold-600">{s.category}</span>
+            <h3 class="font-display text-base font-700 text-forest-950 mt-1.5 mb-2">{s.name}</h3>
+            <p class="text-xs text-forest-600 leading-relaxed">{s.cardBlurb}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

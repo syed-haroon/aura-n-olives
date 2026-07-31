@@ -1,0 +1,27 @@
+---
+import SectionHeader from "./SectionHeader.astro";
+import ServiceCard from "./ServiceCard.astro";
+import { SERVICES } from "../data/services";
+
+interface Props {
+  showHeader?: boolean;
+}
+
+const { showHeader = true } = Astro.props as Props;
+---
+
+<section class="py-20 sm:py-28 bg-cream-100" id="services">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    {showHeader && (
+      <SectionHeader
+        eyebrow="Ways to Work Together"
+        title="Choose the path that fits where you are"
+        description="Every program is built on the same fused method: pick the format, depth and commitment that suits your season of life."
+      />
+    )}
+
+    <div class="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      {SERVICES.map((service) => <ServiceCard service={service} />)}
+    </div>
+  </div>
+</section>

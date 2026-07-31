@@ -1,0 +1,48 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import ServicesGrid from "../../components/ServicesGrid.astro";
+import CTASection from "../../components/CTASection.astro";
+import { site } from "../../data/site";
+---
+
+<Layout
+  title={`Programs & Services | ${site.brandName}`}
+  description={`Explore every way to work with ${site.founderName}: the 90-Day Transformation Challenge, 1:1 Private Mentorship, ${site.methodName} Certification, and ${site.communityName} membership.`}
+  pageUrl="https://auraandolives.com/services/"
+  ogImage="https://auraandolives.com/assets/images/og/services-og.webp"
+>
+  <section
+    class="hero-bg hero-photo-bg pt-28 pb-16 sm:pt-36 sm:pb-20"
+    style="--hero-image: url('/assets/images/heroes/services-hero.webp'); --hero-position: center 25%;"
+  >
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+      <div
+        class="fade-in inline-flex items-center gap-2 mb-5 rounded-full border border-gold-400/30 bg-gold-400/10 px-4 py-1.5"
+      >
+        <span class="h-1.5 w-1.5 rounded-full bg-gold-400"></span>
+        <span class="text-xs font-600 tracking-[0.15em] uppercase text-gold-300"
+          >Programs</span
+        >
+      </div>
+      <h1
+        class="fade-in font-display text-4xl sm:text-5xl font-800 leading-[1.1] text-cream-50"
+      >
+        Every path leads to the same fused method.
+      </h1>
+      <p
+        class="fade-in mt-6 text-cream-200/85 leading-relaxed text-base sm:text-lg"
+      >
+        Whether you want a guided cohort, private attention, a credential, or
+        ongoing community, choose the format that fits where you are right now.
+      </p>
+    </div>
+  </section>
+
+  <ServicesGrid showHeader={false} />
+
+  <CTASection
+    heading="Not sure which is right for you?"
+    title="Tell us your goal: we'll point you to the right program."
+    description="A quick message is all it takes. Reshma personally helps you choose the best fit."
+  />
+</Layout>

@@ -1,0 +1,28 @@
+---
+import SectionHeader from "./SectionHeader.astro";
+import CaseStudyCard from "./CaseStudyCard.astro";
+import { CASE_STUDIES } from "../data/caseStudies";
+
+const featured = CASE_STUDIES.slice(0, 3);
+---
+
+<section class="py-20 sm:py-28 bg-cream-100" id="results">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <SectionHeader
+      eyebrow="Real Results"
+      title="Numbers, not just testimonials"
+      description="Real client data, shared with consent: proof that the method works, tracked and measured."
+    />
+
+    <div class:list={["mt-14 grid gap-5", featured.length === 1 ? "sm:grid-cols-1 max-w-xl mx-auto" : featured.length === 2 ? "sm:grid-cols-2 max-w-3xl mx-auto" : "sm:grid-cols-2 lg:grid-cols-3"]}>
+      {featured.map((study) => <CaseStudyCard study={study} />)}
+    </div>
+
+    <div class="fade-in text-center mt-10">
+      <a href="/results" class="inline-flex items-center gap-2 text-forest-900 font-600 text-sm hover:text-gold-600 transition-colors">
+        View all case studies
+        <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </div>
+</section>

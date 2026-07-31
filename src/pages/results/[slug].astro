@@ -1,0 +1,166 @@
+---
+import { Flower2, Wind, Apple, Dumbbell, ShieldCheck, ArrowDown, ArrowUp } from "@lucide/astro";
+import Layout from "../../layouts/Layout.astro";
+import CTASection from "../../components/CTASection.astro";
+import {
+  CASE_STUDIES,
+  DISCLAIMER,
+  CONSENT_NOTE,
+  getAllCaseStudySlugs,
+  getCaseStudyBySlug,
+  type CaseStudy,
+} from "../../data/caseStudies";
+import { getServiceBySlug } from "../../data/services";
+import { site } from "../../data/site";
+
+export async function getStaticPaths() {
+  return getAllCaseStudySlugs().map((slug) => ({
+    params: { slug },
+    props: { study: getCaseStudyBySlug(slug) },
+  }));
+}
+
+interface Props {
+  study: CaseStudy | undefined;
+}
+
+const { study } = Astro.props as Props;
+
+if (!study) {
+  return Astro.redirect("/results");
+}
+
+const pageTitle = `${study.headline} · Case Study | ${site.brandName}`;
+const pageDesc = study.cardBlurb;
+const pageUrl = `${site.siteUrl}/results/${study.slug}`;
+
+const PILLAR_ICONS: Record<string, any> = { Yoga: Flower2, Pranayama: Wind, "Quantified Nutrition Diet": Apple, "Strength Training": Dumbbell };
+const ArrowIcon = study.changeDirection === 'down' ? ArrowDown : ArrowUp;
+const relatedService = study.relatedServiceSlug ? getServiceBySlug(study.relatedServiceSlug) : undefined;
+
+const otherStudies = CASE_STUDIES.filter((c) => c.slug !== study.slug);
+const RESULTS_OG_MEDIA: Record<string, string> = {
+  'thyroid-tsh-recovery': 'https://auraandolives.com/assets/images/og/thyroid-tsh-recovery-og.webp',
+};
+const pageOgImage = RESULTS_OG_MEDIA[study.slug] ?? 'https://auraandolives.com/assets/images/og/results-og.webp';
+---
+
+<Layout title={pageTitle} description={pageDesc} pageUrl={pageUrl} ogImage={pageOgImage} ogType="article">
+
+  <!-- Hero -->
+  <section class="hero-bg pt-28 pb-16 sm:pt-36 sm:pb-20">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+      <div class="fade-in inline-flex items-center gap-2 mb-5 rounded-full border border-gold-400/30 bg-gold-400/10 px-4 py-1.5">
+        <span class="h-1.5 w-1.5 rounded-full bg-gold-400"></span>
+        <span class="text-xs font-600 tracking-[0.15em] uppercase text-gold-300">{study.condition}</span>
+      </div>
+      <h1 class="fade-in font-display text-3xl sm:text-4xl font-800 leading-[1.15] text-cream-50">
+        {study.headline}
+      </h1>
+      <p class="fade-in mt-5 text-xs tracking-wide uppercase text-cream-200/60">
+        {study.clientLabel} · {study.duration} · {site.methodName}
+      </p>
+    </div>
+  </section>
+
+  <!-- Before / After -->
+  <section class="py-16 sm:py-20 bg-cream-50">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      <div class="fade-in grid sm:grid-cols-2 gap-4">
+        <div class="rounded-2xl border border-clay-100 bg-clay-50 p-6">
+          <span class="text-[11px] font-700 tracking-[0.15em] uppercase text-clay-600">Before</span>
+          <p class="text-xs text-forest-500 mt-1 mb-4">{study.before.date}</p>
+          <div class="font-display text-4xl font-800 text-clay-600 leading-none">{study.before.value}</div>
+          <p class="text-xs text-forest-500 mt-2">{study.metricLabel} ({study.metricUnit})</p>
+          {study.referenceRange && <p class="text-[11px] text-forest-400 mt-1">Reference range: {study.referenceRange}</p>}
+        </div>
+        <div class="rounded-2xl border border-gold-200 bg-gold-50 p-6">
+          <span class="text-[11px] font-700 tracking-[0.15em] uppercase text-gold-700">After</span>
+          <p class="text-xs text-forest-500 mt-1 mb-4">{study.after.date}</p>
+          <div class="font-display text-4xl font-800 text-forest-900 leading-none">{study.after.value}</div>
+          <p class="text-xs text-forest-500 mt-2">{study.metricLabel} ({study.metricUnit})</p>
+          {study.referenceRange && <p class="text-[11px] text-forest-400 mt-1">Reference range: {study.referenceRange}</p>}
+        </div>
+      </div>
+
+      <div class="fade-in mt-5 flex items-center justify-center gap-3 rounded-full bg-forest-900 text-cream-50 px-6 py-3.5">
+        <span class="inline-flex items-center gap-1 font-display text-2xl font-800 text-gold-400">
+          <ArrowIcon class="w-5 h-5" stroke-width={3} />
+          {study.changePercent}%
+        </span>
+        <span class="text-sm text-cream-200/85">change in {study.metricLabel} over {study.duration}</span>
+      </div>
+
+      {study.contextNote && (
+        <p class="fade-in mt-5 text-sm text-forest-600 leading-relaxed text-center max-w-xl mx-auto">
+          <ShieldCheck class="w-4 h-4 inline-block -mt-1 mr-1 text-forest-400" stroke-width={2} />
+          {study.contextNote}
+        </p>
+      )}
+    </div>
+  </section>
+
+  <!-- Pillars used -->
+  <section class="py-16 sm:py-20 bg-forest-950 text-cream-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <h2 class="fade-in font-display text-2xl sm:text-3xl font-700 text-center mb-3">What made this happen</h2>
+      <p class="fade-in text-center text-cream-200/70 text-sm mb-12">Drawn from {site.methodName}</p>
+      <div class="grid sm:grid-cols-3 gap-5 max-w-2xl mx-auto">
+        {study.pillarsUsed.map((title) => {
+          const Icon = PILLAR_ICONS[title] ?? Flower2;
+          return (
+            <div class="fade-in bg-cream-50/5 border border-cream-50/10 rounded-2xl p-6 text-center">
+              <div class="h-10 w-10 rounded-full bg-gold-500 text-forest-950 flex items-center justify-center mb-3 mx-auto">
+                <Icon class="w-5 h-5" stroke-width={2} />
+              </div>
+              <h3 class="font-display text-sm font-700">{title}</h3>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <!-- Quote -->
+  <section class="py-16 sm:py-20 bg-cream-100">
+    <div class="max-w-2xl mx-auto px-4 sm:px-6 text-center">
+      <span class="fade-in text-gold-400 text-5xl font-display leading-none">&ldquo;</span>
+      <p class="fade-in font-display text-xl sm:text-2xl text-forest-900 leading-snug italic -mt-2">
+        {study.quote}
+      </p>
+      <p class="fade-in mt-5 text-sm text-forest-500">{site.founderName}, {site.founderTitle}</p>
+    </div>
+  </section>
+
+  <!-- Disclaimer -->
+  <section class="py-10 bg-cream-50">
+    <div class="max-w-2xl mx-auto px-4 sm:px-6 text-center space-y-2">
+      <p class="fade-in text-xs text-forest-500 leading-relaxed">{DISCLAIMER}</p>
+      <p class="fade-in text-xs text-forest-400 leading-relaxed">{CONSENT_NOTE}</p>
+    </div>
+  </section>
+
+  <CTASection
+    context={`the "${study.headline}" case study`}
+    heading="Want a result like this?"
+    title={relatedService ? `Explore ${relatedService.name}` : "Let's map your own transformation."}
+    description={relatedService ? relatedService.cardBlurb : "Tell Reshma where you're starting from and she'll recommend the right program."}
+  />
+
+  {otherStudies.length > 0 && (
+    <section class="py-16 sm:py-20 bg-cream-50">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <h2 class="fade-in font-display text-2xl font-700 text-forest-950 text-center mb-10">More real results</h2>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {otherStudies.map((s) => (
+            <a href={`/results/${s.slug}`} class="fade-in block bg-white rounded-2xl border border-forest-900/8 p-5 hover:shadow-soft hover:-translate-y-1 transition-all">
+              <span class="text-[10px] font-600 tracking-[0.15em] uppercase text-forest-500">{s.condition}</span>
+              <h3 class="font-display text-base font-700 text-forest-950 mt-1.5 mb-2">{s.headline}</h3>
+              <p class="text-xs text-forest-600 leading-relaxed">{s.cardBlurb}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+</Layout>

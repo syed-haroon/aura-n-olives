@@ -1,0 +1,47 @@
+---
+import { site } from "../data/site";
+---
+
+<section class="py-20 sm:py-28 bg-forest-950 text-cream-50 overflow-hidden">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-12 items-center">
+    <div class="fade-in order-2 lg:order-1 relative">
+      <div class="aspect-square w-full max-w-md mx-auto rounded-[2rem] border border-cream-50/10 shadow-soft overflow-hidden">
+        <img
+          src="/assets/images/founder/about-teaser.webp"
+          alt="Portrait of Reshma in the Aura & Olives studio."
+          width="896"
+          height="896"
+          class="photo-frame-image"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+    </div>
+
+    <div class="fade-in order-1 lg:order-2">
+      <div class="flex items-center gap-2 mb-3">
+        <span class="gold-line"></span>
+        <span class="text-xs font-600 tracking-[0.2em] uppercase text-gold-400">The Wounded Healer</span>
+      </div>
+      <h2 class="font-display text-3xl sm:text-4xl font-700 leading-tight">
+        I didn't design this method in theory. I walked it myself.
+      </h2>
+      <p class="mt-5 text-cream-200/85 leading-relaxed text-base">
+        Obesity since childhood, low confidence, pelvic prolapse after delivery, a hiatus hernia from years of poor
+        health. These weren't just struggles, they were my teachers. I know exactly what it feels like to live in a
+        body that won't cooperate, and exactly what it takes to climb out of that place.
+      </p>
+      <p class="mt-4 text-cream-200/85 leading-relaxed text-base">
+        Today I mentor yoga teachers and aspirants through {site.methodName}: the same fusion of Yoga, Pranayama,
+        Quantified Nutrition Diet &amp; Strength Training that rebuilt my own body and confidence.
+      </p>
+      <a
+        href="/about"
+        class="mt-7 inline-flex items-center gap-2 text-gold-400 font-600 text-sm hover:text-gold-300 transition-colors"
+      >
+        Read {site.founderName.split(' ')[0]}'s full story
+        <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </div>
+</section>

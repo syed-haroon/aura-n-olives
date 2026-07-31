@@ -1,0 +1,48 @@
+---
+import { Leaf } from "@lucide/astro";
+import SectionHeader from "./SectionHeader.astro";
+
+const signs = [
+  "You teach yoga daily, yet privately battle belly fat or a “skinny fat” body that never seems to change.",
+  "Advanced asanas (arm balances, inversions) feel out of reach because your strength hasn't caught up to your practice.",
+  "Post-partum weight, pelvic floor weakness, or a hernia/prolapse has quietly changed how you move and teach.",
+  "You're confused between fad diets, “satvik-only” beliefs, and what your body actually needs to eat.",
+  "You quietly fear your students wonder why their yoga teacher doesn't look “fit.”",
+];
+---
+
+<section class="py-20 sm:py-28 bg-cream-100">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6">
+    <SectionHeader
+      eyebrow="Sound familiar?"
+      title={'There’s a name for what you’re feeling: "skinny fat."'}
+      description="Most yoga teachers know something is off, but can't quite name it. It's not about willpower. It's that yoga alone was never designed to fix body composition, strength, or nutrition confusion."
+    />
+
+    <div class="mt-12 grid sm:grid-cols-2 gap-4 max-w-3xl mx-auto">
+      {signs.map((sign) => (
+        <div class="fade-in flex items-start gap-3 bg-white rounded-2xl border border-forest-900/8 p-5">
+          <span class="mt-1 shrink-0 h-5 w-5 rounded-full bg-gold-100 text-gold-700 text-xs font-700 flex items-center justify-center">✓</span>
+          <p class="text-sm text-forest-800 leading-relaxed">{sign}</p>
+        </div>
+      ))}
+    </div>
+
+    <p class="fade-in text-center mt-10 text-forest-700 max-w-xl mx-auto text-sm leading-relaxed">
+      If even one of these feels true, you're not alone, and it's not a flaw in your practice. It's a gap that the right method can close.
+    </p>
+
+    <div class="fade-in mt-10 max-w-3xl mx-auto rounded-2xl border-2 border-gold-400/40 bg-gradient-to-br from-forest-900 to-forest-950 p-6 sm:p-8 text-center shadow-soft">
+      <div class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-gold-500 text-forest-950">
+        <Leaf class="w-6 h-6" stroke-width={2} />
+      </div>
+      <h3 class="font-display text-xl sm:text-2xl font-700 text-cream-50 mb-2">
+        New to yoga entirely? Perfect place to start.
+      </h3>
+      <p class="text-sm sm:text-base text-cream-200/85 leading-relaxed max-w-xl mx-auto">
+        This method meets complete beginners exactly where they are. No flexibility, no fitness level, and no prior
+        experience required, just a willingness to begin.
+      </p>
+    </div>
+  </div>
+</section>

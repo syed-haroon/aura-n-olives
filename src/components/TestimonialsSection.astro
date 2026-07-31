@@ -1,0 +1,35 @@
+---
+import SectionHeader from "./SectionHeader.astro";
+
+const placeholders = [1, 2, 3];
+---
+
+<section class="py-20 sm:py-28 bg-cream-50">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <SectionHeader
+      eyebrow="Real Stories, Coming Soon"
+      title="Transformation, in their own words"
+      description="This section is ready for your students' testimonials. Swap each placeholder card below with a real quote, name, designation and photo before launch."
+    />
+
+    <div class="mt-14 grid sm:grid-cols-3 gap-5">
+      {placeholders.map((i) => (
+        <div class="fade-in bg-white rounded-2xl border border-dashed border-forest-900/20 p-6 flex flex-col">
+          <span class="text-gold-400 text-3xl font-display leading-none mb-3">“</span>
+          <p class="text-sm text-forest-500 italic leading-relaxed flex-1">
+            Add a real testimonial here: a short quote about the transformation this student experienced, in their own words.
+          </p>
+          <div class="mt-5 flex items-center gap-3">
+            <div class="h-10 w-10 rounded-full bg-forest-100 border border-forest-900/10 flex items-center justify-center text-forest-400 text-xs font-600">
+              #{i}
+            </div>
+            <div>
+              <div class="text-sm font-600 text-forest-800">Student Name</div>
+              <div class="text-xs text-forest-500">Designation / Program</div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

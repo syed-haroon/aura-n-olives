@@ -1,0 +1,202 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+import CTASection from "../components/CTASection.astro";
+import { HeartHandshake, FlaskConical, Sparkles } from "@lucide/astro";
+import { site } from "../data/site";
+
+const themes = [
+  {
+    icon: HeartHandshake,
+    title: "The Wounded Healer Turned Transformation Guide",
+    description:
+      "My authority doesn't come from textbooks alone. It comes from having lived every pain point my students face. Because I have personally fought obesity, weakness and post-partum health collapse, I lead with genuine empathy toward both the physical and psychological pain of my clients. My 90-Day Transformation Challenge is not a program I designed in theory; it is the path I walked myself.",
+  },
+  {
+    icon: FlaskConical,
+    title: "The Science-Backed Fusion Practitioner",
+    description:
+      "I refuse to teach yoga in isolation. My deep love for human anatomy, biomechanics, biochemistry and nutrition means I can explain exactly which asana works on which part of the body, where practitioners commonly go wrong, and which foods the gut truly loves. I integrate yogasanas with weights, Pilates, cardio and mobility drills for optimum results.",
+  },
+  {
+    icon: Sparkles,
+    title: "The Holistic Soul Rooted in Gratitude and Spirit",
+    description:
+      "Beyond the physical, I teach chakra healing, therapeutic asanas, deep relaxation and the daily practice of gratitude toward life. My spirituality anchors everything. I want my students to feel gratitude, respect and discipline, and I dream of building a community defined by kindness, humility, listening and action-taking.",
+  },
+];
+
+const usps = [
+  "You serve a niche within a niche: teachers, not just students. I'm not selling weight loss; I'm selling professional credibility, career growth, and embodied authority.",
+  "My scar story is un-copyable: childhood obesity, post-delivery pelvic prolapse, and a hiatus hernia, fully healed. Competitors can copy content; nobody can copy a lived journey.",
+  "I name the unnamed problem: “skinny fat.” Most yoga teachers know something is wrong but can't articulate it. Naming it makes me the one who diagnoses, and diagnosers are trusted as healers.",
+  "I bridge the sacred and the scientific: anatomy, biomechanics and macros, spoken with equal fluency and respect alongside chakras, pranayama and gratitude.",
+  `${site.methodName} is a proprietary system, not a class: a complete body recomposition method with a promised outcome in a defined timeframe.`,
+  "I'm relatable proof, not an unreachable ideal: a mother who transformed while cooking for family, raising kids, and teaching daily.",
+];
+
+const codeOfHonor = [
+  "Gratitude first: we honor our bodies, teachers, and journey daily.",
+  "Listen deeply, act swiftly: knowledge without action is decoration.",
+  "Lift others as you rise: every member helps another member.",
+  "Humility over ego: we are students for life.",
+  "Kindness is strength: no judgment, no toxicity, ever.",
+  "Discipline is devotion: showing up on time, every time, is our sacred practice.",
+];
+---
+
+<Layout
+  title={`About ${site.founderName} | ${site.brandName}`}
+  description={`Meet ${site.founderName}, ${site.founderTitle} at ${site.brandName}: the story behind ${site.methodName}.`}
+  pageUrl="https://auraandolives.com/about/"
+  ogImage="https://auraandolives.com/assets/images/og/about-og.webp"
+>
+  <section
+    class="hero-bg hero-photo-bg pt-28 pb-16 sm:pt-36 sm:pb-20"
+    style="--hero-image: url('/assets/images/heroes/about-hero.webp'); --hero-position: center 25%;"
+  >
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <div
+        class="fade-in inline-flex items-center gap-2 mb-5 rounded-full border border-gold-400/30 bg-gold-400/10 px-4 py-1.5"
+      >
+        <span class="h-1.5 w-1.5 rounded-full bg-gold-400"></span>
+        <span class="text-xs font-600 tracking-[0.15em] uppercase text-gold-300"
+          >About {site.founderName}</span
+        >
+      </div>
+      <h1
+        class="fade-in font-display text-4xl sm:text-5xl font-800 leading-[1.1] text-cream-50"
+      >
+        A yoga guide on a mission, born from my own broken health.
+      </h1>
+      <p
+        class="fade-in mt-6 text-cream-200/85 leading-relaxed text-base sm:text-lg max-w-2xl mx-auto"
+      >
+        {site.founderTitle}, {site.communityName}
+      </p>
+    </div>
+  </section>
+
+  <section class="py-16 sm:py-20 bg-cream-50">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      <div
+        class="fade-in aspect-video w-full rounded-[2rem] border border-forest-900/10 shadow-soft mb-12 overflow-hidden"
+      >
+        <img
+          src="/assets/images/founder/about-story.webp"
+          alt="Reshma guiding a mindful studio practice with her community."
+          width="1440"
+          height="810"
+          class="photo-frame-image"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+
+      <div class="fade-in space-y-5 text-forest-800 leading-relaxed text-base">
+        <p>
+          Obesity since childhood, low confidence, pelvic prolapse after
+          delivery, a hiatus hernia from years of poor health management. These
+          were not just struggles, they were my teachers. I know intimately what
+          it feels like to live in a body that won't cooperate, to lack the
+          strength to move freely, and to feel unpresentable in your own skin.
+          And I know what it takes to climb out of that place. This lived
+          journey is exactly why I am the one to guide others through theirs.
+        </p>
+        <p>
+          My calling is specific: I coach yoga teachers and yoga aspirants who
+          are held back by obesity, skinny fat, inflexibility and strength
+          issues: practitioners who cannot scale to their desired level because
+          their own bodies have become their limitation. I help them achieve
+          optimal body composition, mobility and energy through my signature
+          fusion formula: {site.methodName}.
+        </p>
+        <p>
+          My teaching style is energetic, therapeutic and technically precise,
+          always ending with deep relaxation to the core. Inspired by masters
+          like BKS Iyengar and Tirumalai Krishnamacharya, I blend classical
+          yogic wisdom with contemporary fitness science, so that the yoga
+          teachers I mentor finally embody the transformation they teach.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 sm:py-28 bg-forest-950 text-cream-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <SectionHeader
+        eyebrow="My Persona"
+        title="Three themes that define my work"
+        light
+      />
+      <div class="mt-14 grid md:grid-cols-3 gap-6">
+        {
+          themes.map((theme) => (
+            <div class="fade-in bg-cream-50/5 border border-cream-50/10 rounded-2xl p-6">
+              <div class="h-11 w-11 rounded-full bg-gold-500 text-forest-950 flex items-center justify-center mb-5">
+                <theme.icon class="w-5 h-5" stroke-width={2} />
+              </div>
+              <h3 class="font-display text-lg font-700 mb-3 leading-snug">
+                {theme.title}
+              </h3>
+              <p class="text-sm text-cream-200/80 leading-relaxed">
+                {theme.description}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 sm:py-28 bg-cream-100">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <SectionHeader
+        eyebrow="What Makes This Different"
+        title="Why yoga teachers trust this method"
+        description={`"I turn yoga teachers into the transformation they teach, with science, spirit, and a story I lived myself."`}
+      />
+      <div class="mt-14 grid sm:grid-cols-2 gap-5">
+        {
+          usps.map((usp) => (
+            <div class="fade-in flex items-start gap-3 bg-white rounded-2xl border border-forest-900/8 p-5">
+              <span class="mt-1 shrink-0 h-6 w-6 rounded-full bg-forest-900 text-gold-400 text-xs font-700 flex items-center justify-center">
+                ★
+              </span>
+              <p class="text-sm text-forest-800 leading-relaxed">{usp}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 sm:py-28 bg-cream-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <SectionHeader
+        eyebrow="Our Code of Honor"
+        title={`Values of ${site.communityName}`}
+      />
+      <div class="mt-12 grid sm:grid-cols-2 gap-4">
+        {
+          codeOfHonor.map((value, i) => (
+            <div class="fade-in flex items-start gap-4 bg-white rounded-2xl border border-forest-900/8 p-5">
+              <span class="font-display text-2xl font-700 text-gold-400 leading-none">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <p class="text-sm text-forest-800 leading-relaxed pt-1">
+                {value}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    context={`getting to know ${site.founderName}`}
+    title="Let's start your transformation story."
+    description="Message Reshma directly. Every reply is personal, never a bot."
+  />
+</Layout>

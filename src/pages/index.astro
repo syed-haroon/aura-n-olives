@@ -1,0 +1,33 @@
+---
+import Layout from "../layouts/Layout.astro";
+import HeroSection from "../components/HeroSection.astro";
+import ProblemSection from "../components/ProblemSection.astro";
+import MethodSection from "../components/MethodSection.astro";
+import ResultsTeaser from "../components/ResultsTeaser.astro";
+import AboutTeaser from "../components/AboutTeaser.astro";
+import ServicesGrid from "../components/ServicesGrid.astro";
+import TestimonialsSection from "../components/TestimonialsSection.astro";
+import FaqSection from "../components/FaqSection.astro";
+import CTASection from "../components/CTASection.astro";
+import { SERVICES } from "../data/services";
+
+const homeFaqs = [
+  SERVICES[0].faqs[0],
+  SERVICES[0].faqs[1],
+  SERVICES[0].faqs[3],
+  SERVICES[2].faqs[0],
+  SERVICES[3].faqs[2],
+];
+---
+
+<Layout pageUrl="https://auraandolives.com/" ogImage="https://auraandolives.com/assets/images/og/home-og.webp">
+  <HeroSection />
+  <ProblemSection />
+  <MethodSection />
+  <ResultsTeaser />
+  <AboutTeaser />
+  <ServicesGrid />
+  <TestimonialsSection />
+  <FaqSection faqs={homeFaqs} eyebrow="Common Questions" title="Before You Reach Out" />
+  <CTASection />
+</Layout>

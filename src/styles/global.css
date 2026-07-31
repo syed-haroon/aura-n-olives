@@ -1,0 +1,151 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* , *::before, *::after { transition: background-color 0.3s, border-color 0.3s, color 0.2s; }
+
+:root {
+  color-scheme: light;
+  --nav-h: 64px;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --nav-h: 80px;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  font-family: 'Outfit', sans-serif;
+  background: #fefdfa;
+  color: #14261a;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+/* Hero background: deep forest gradient with soft radial gold glow */
+.hero-bg {
+  background:
+    radial-gradient(60% 50% at 50% 0%, rgba(212, 175, 55, 0.18) 0%, rgba(212, 175, 55, 0) 60%),
+    linear-gradient(160deg, #14261a 0%, #1e3524 55%, #0c1810 100%);
+}
+
+/*
+ * The nav is `fixed`, so every hero section starts at y=0 underneath it.
+ * If the photo layer used `background-position: center` on the full section
+ * box, its focal point (a face, say) could land in the strip hidden behind
+ * the nav. `::before` reserves that strip via `top: var(--nav-h)` so
+ * `--hero-position` is only ever computed against the actually-visible area.
+ */
+.hero-photo-bg {
+  position: relative;
+  isolation: isolate;
+  background:
+    radial-gradient(60% 50% at 50% 0%, rgba(212, 175, 55, 0.18) 0%, rgba(212, 175, 55, 0) 60%),
+    linear-gradient(160deg, #14261a 0%, #1e3524 55%, #0c1810 100%);
+}
+
+.hero-photo-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  top: var(--nav-h);
+  z-index: -1;
+  background-image:
+    linear-gradient(180deg, rgba(12, 24, 16, 0.72) 0%, rgba(12, 24, 16, 0.56) 45%, rgba(12, 24, 16, 0.74) 100%),
+    radial-gradient(70% 65% at 50% 18%, rgba(20, 38, 26, 0.08) 0%, rgba(20, 38, 26, 0.32) 62%, rgba(20, 38, 26, 0.58) 100%),
+    var(--hero-image);
+  background-size: cover;
+  background-position: center, center, var(--hero-position, center center);
+  background-repeat: no-repeat;
+}
+
+.nav-blur {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.gold-line {
+  height: 3px;
+  width: 48px;
+  background: linear-gradient(90deg, #d4af37, #f2da93);
+  border-radius: 2px;
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.badge-gold {
+  background: linear-gradient(90deg, #d4af37, #eac35c);
+}
+
+@keyframes pulse-gold {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.45); }
+  50% { box-shadow: 0 0 0 12px rgba(212, 175, 55, 0); }
+}
+
+.wa-pulse {
+  animation: pulse-gold 2.5s infinite;
+}
+
+/* Placeholder photo block — swap for real photography before launch */
+.photo-placeholder {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(120% 100% at 20% 0%, rgba(212, 175, 55, 0.25) 0%, transparent 55%),
+    linear-gradient(150deg, #1e3524 0%, #14261a 70%);
+}
+
+.photo-placeholder::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(135deg, rgba(250, 246, 236, 0.05) 0 2px, transparent 2px 14px);
+}
+
+.photo-placeholder-label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1.5rem;
+  color: #f3ecd9;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+}
+
+.photo-frame-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: #d4af37 !important;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+}
+
+::selection {
+  background: rgba(212, 175, 55, 0.35);
+}

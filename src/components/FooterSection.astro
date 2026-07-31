@@ -1,0 +1,48 @@
+---
+import { site, buildWhatsAppLink } from "../data/site";
+
+const waLink = buildWhatsAppLink(`Hi Reshma, I'd like to know more about ${site.brandName}.`);
+---
+
+<footer class="bg-forest-950 text-forest-200 py-14">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="flex flex-col md:flex-row justify-between items-start gap-10 mb-10">
+      <div class="max-w-sm">
+        <div class="flex items-center gap-2.5 mb-3">
+          <span class="relative h-11 w-11 shrink-0">
+            <img src={site.logo} alt={`${site.brandName} logo`} class="block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-16 w-16 max-w-none object-contain" />
+          </span>
+          <span>
+            <span class="block font-display text-lg font-700 text-cream-50">{site.brandName}</span>
+            <span class="block text-[11px] tracking-[0.15em] uppercase text-gold-400">{site.tagline}</span>
+          </span>
+        </div>
+        <p class="text-sm leading-relaxed text-forest-300">
+          {site.communityName}, helping yoga teachers and aspirants beat obesity and skinny fat through {site.methodName} (Yoga, Pranayama, Quantified Nutrition Diet &amp; Strength Training).
+        </p>
+      </div>
+
+      <div class="flex gap-10 sm:gap-14 text-sm">
+        <div class="space-y-2.5">
+          <div class="text-cream-50 font-600 text-xs uppercase tracking-wider mb-2">Explore</div>
+          <a href="/" class="block hover:text-gold-400 transition-colors">Home</a>
+          <a href="/services" class="block hover:text-gold-400 transition-colors">Services</a>
+          <a href="/results" class="block hover:text-gold-400 transition-colors">Results</a>
+          <a href="/about" class="block hover:text-gold-400 transition-colors">About</a>
+          <a href="/#faq" class="block hover:text-gold-400 transition-colors">FAQ</a>
+        </div>
+        <div class="space-y-2.5">
+          <div class="text-cream-50 font-600 text-xs uppercase tracking-wider mb-2">Connect</div>
+          <a href={waLink} target="_blank" rel="noopener noreferrer" class="block hover:text-gold-400 transition-colors">WhatsApp</a>
+          <a href={`mailto:${site.email}`} class="block hover:text-gold-400 transition-colors">Email</a>
+          <a href={site.instagramUrl} target="_blank" rel="noopener noreferrer" class="block hover:text-gold-400 transition-colors">Instagram</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="border-t border-cream-50/10 pt-6 text-xs flex flex-col gap-2 text-center md:flex-row md:items-center md:justify-between md:text-left text-forest-400">
+      <div>© {new Date().getFullYear()} {site.brandName}. All rights reserved.</div>
+      <div>{site.founderName} · {site.founderTitle}</div>
+    </div>
+  </div>
+</footer>
