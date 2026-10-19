@@ -21,7 +21,7 @@ export interface CaseStudy {
   contextNote?: string;
   pillarsUsed: string[];
   quote: string;
-  relatedServiceSlug?: string;
+  relatedProgramSlug?: string;
   cardBlurb: string;
 }
 

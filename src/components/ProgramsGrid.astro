@@ -1,7 +1,7 @@
 ---
 import SectionHeader from "./SectionHeader.astro";
-import ServiceCard from "./ServiceCard.astro";
-import { SERVICES } from "../data/services";
+import ProgramCard from "./ProgramCard.astro";
+import { PROGRAMS } from "../data/programs";
 
 interface Props {
   showHeader?: boolean;
@@ -10,7 +10,7 @@ interface Props {
 const { showHeader = true } = Astro.props as Props;
 ---
 
-<section class="py-20 sm:py-28 bg-cream-100" id="services">
+<section class="py-20 sm:py-28 bg-cream-100" id="programs">
   <div class="max-w-6xl mx-auto px-4 sm:px-6">
     {showHeader && (
       <SectionHeader
@@ -21,7 +21,7 @@ const { showHeader = true } = Astro.props as Props;
     )}
 
     <div class="mt-14 grid sm:grid-cols-2 gap-5 max-w-4xl mx-auto">
-      {SERVICES.map((service) => <ServiceCard service={service} />)}
+      {PROGRAMS.map((program) => <ProgramCard program={program} />)}
     </div>
   </div>
 </section>

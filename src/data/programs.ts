@@ -8,7 +8,7 @@ export interface Faq {
   a: string;
 }
 
-export interface Service {
+export interface Program {
   slug: string;
   name: string;
   shortName: string;
@@ -48,7 +48,7 @@ const FUSION_PILLARS: Pillar[] = [
   },
 ];
 
-export const SERVICES: Service[] = [
+export const PROGRAMS: Program[] = [
   {
     slug: 'wellness-warrior-challenge',
     name: 'Wellness Warrior Challenge',
@@ -92,8 +92,8 @@ export const SERVICES: Service[] = [
     ],
     faqs: [
       {
-        q: "Won't lifting weights make me stiff and ruin my yoga practice?",
-        a: "This is the #1 myth we bust on day one. Strength training done right makes your asanas safer and more stable. Even BKS Iyengar built strength through props and resistance. You'll get more flexible, not less.",
+        q: "Won't lifting weights make me bulky, stiff and ruin my yoga practice?",
+        a: "Not at all! Flexibility and muscle strength are two different attributes, and they can absolutely co-exist in the same individual, and I am the living proof! Yoga helps improve flexibility, mobility, body awareness, and control, while lifting weight builds optimum muscle strength, supports bone health, and improves functional capacity. The secret lies in how we want to train, not in choosing one over the other. My focus with weight training is to build lean muscle mass and optimum strength for functional fitness, not to bulk up excessively. When combined with yoga, appropriate resistance training can complement your practice beautifully. After all, we don\'t just want a flexible body, we want a body that is flexible, strong, stable, and capable at every age, isn\'t it!",
       },
       {
         q: "I teach all day and manage a family, do I have time for this?",
@@ -116,16 +116,16 @@ export const SERVICES: Service[] = [
     cardBlurb: 'The signature 90-day cohort that fuses Yoga, Pranayama, Nutrition & Strength training into one system.',
   },
   {
-    slug: 'membership-community',
-    name: 'Yogi Recomposition Lab',
-    shortName: 'Membership Community',
+    slug: 'yoga-sadhana',
+    name: 'Yoga Sadhana',
+    shortName: 'Yoga Sadhana',
     tagline: 'A community of yoga teachers becoming the transformation they teach',
     category: 'Membership',
     icon: 'Users',
     accent: 'gold',
     heroDescription:
-      'A monthly membership for yoga teachers and aspirants who want ongoing support, live classes and accountability: a home base to sustain the transformation, not just start it.',
-    format: 'Monthly membership · Live weekly classes · Nutrition audits · Monthly challenges',
+      'A three months program where the serious yoga aspirants and enthusiasts would practice yoga & pranayama which helps not only  to keep up own health at it\’s best but also acquire a skill and gets ready to be a yoga practitioner to teach yoga for others.',
+    format: '3 batches daily · 60 minutes per batch · 5 days a week',
     idealFor: [
       'Graduates of the 90-Day Challenge who want to sustain their results',
       'Teachers who want a lower-commitment way to start their transformation journey',
@@ -154,17 +154,17 @@ export const SERVICES: Service[] = [
     faqs: [
       {
         q: 'Do I need to complete the 90-Day Challenge before joining?',
-        a: 'No, the Collective welcomes both graduates who want to sustain their results and newcomers who prefer a lighter, ongoing entry point over an intensive program.',
+        a: 'No, Yoga Sadhana welcomes both graduates who want to sustain their results and newcomers who prefer a lighter, ongoing entry point over an intensive program.',
       },
       {
         q: 'What does a typical month look like?',
         a: 'Daily live classes, one nutrition audit, one community challenge, and ongoing support inside the private group, designed to fit around a full teaching schedule.',
       },
     ],
-    ctaLabel: 'Join the Collective',
-    cardBlurb: 'Ongoing live classes, nutrition audits and community to sustain your transformation.',
+    ctaLabel: 'Join Yoga Sadhana',
+    cardBlurb: 'A three months program where the serious yoga aspirants and enthusiasts would practice yoga & pranayama',
   },
 ];
 
-export const getServiceBySlug = (slug: string) => SERVICES.find((s) => s.slug === slug);
-export const getAllServiceSlugs = () => SERVICES.map((s) => s.slug);
+export const getProgramBySlug = (slug: string) => PROGRAMS.find((s) => s.slug === slug);
+export const getAllProgramSlugs = () => PROGRAMS.map((s) => s.slug);

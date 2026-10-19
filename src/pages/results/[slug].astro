@@ -10,7 +10,7 @@ import {
   getCaseStudyBySlug,
   type CaseStudy,
 } from "../../data/caseStudies";
-import { getServiceBySlug } from "../../data/services";
+import { getProgramBySlug } from "../../data/programs";
 import { site } from "../../data/site";
 
 export async function getStaticPaths() {
@@ -36,7 +36,7 @@ const pageUrl = `${site.siteUrl}/results/${study.slug}`;
 
 const PILLAR_ICONS: Record<string, any> = { Yoga: Flower2, Pranayama: Wind, "Quantified Nutrition Diet": Apple, "Strength Training": Dumbbell };
 const ArrowIcon = study.changeDirection === 'down' ? ArrowDown : ArrowUp;
-const relatedService = study.relatedServiceSlug ? getServiceBySlug(study.relatedServiceSlug) : undefined;
+const relatedProgram = study.relatedProgramSlug ? getProgramBySlug(study.relatedProgramSlug) : undefined;
 
 const otherStudies = CASE_STUDIES.filter((c) => c.slug !== study.slug);
 const RESULTS_OG_MEDIA: Record<string, string> = {
@@ -143,8 +143,8 @@ const pageOgImage = RESULTS_OG_MEDIA[study.slug] ?? 'https://auraandolives.com/a
   <CTASection
     context={`the "${study.headline}" case study`}
     heading="Want a result like this?"
-    title={relatedService ? `Explore ${relatedService.name}` : "Let's map your own transformation."}
-    description={relatedService ? relatedService.cardBlurb : "Tell Reshma where you're starting from and she'll recommend the right program."}
+    title={relatedProgram ? `Explore ${relatedProgram.name}` : "Let's map your own transformation."}
+    description={relatedProgram ? relatedProgram.cardBlurb : "Tell Reshma where you're starting from and she'll recommend the right program."}
   />
 
   {otherStudies.length > 0 && (

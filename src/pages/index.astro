@@ -5,14 +5,14 @@ import ProblemSection from "../components/ProblemSection.astro";
 import MethodSection from "../components/MethodSection.astro";
 import ResultsTeaser from "../components/ResultsTeaser.astro";
 import AboutTeaser from "../components/AboutTeaser.astro";
-import ServicesGrid from "../components/ServicesGrid.astro";
+import ProgramsGrid from "../components/ProgramsGrid.astro";
 import TestimonialsSection from "../components/TestimonialsSection.astro";
 import FaqSection from "../components/FaqSection.astro";
 import CTASection from "../components/CTASection.astro";
-import { getServiceBySlug } from "../data/services";
+import { getProgramBySlug } from "../data/programs";
 
-const challenge = getServiceBySlug('wellness-warrior-challenge');
-const membership = getServiceBySlug('membership-community');
+const challenge = getProgramBySlug('wellness-warrior-challenge');
+const membership = getProgramBySlug('yoga-sadhana');
 
 const homeFaqs = [
   challenge?.faqs[0],
@@ -28,7 +28,7 @@ const homeFaqs = [
   <MethodSection />
   <ResultsTeaser />
   <AboutTeaser />
-  <ServicesGrid />
+  <ProgramsGrid />
   <TestimonialsSection />
   <FaqSection faqs={homeFaqs} eyebrow="Common Questions" title="Before You Reach Out" />
   <CTASection />

@@ -1,19 +1,19 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import ServicesGrid from "../../components/ServicesGrid.astro";
+import ProgramsGrid from "../../components/ProgramsGrid.astro";
 import CTASection from "../../components/CTASection.astro";
 import { site } from "../../data/site";
 ---
 
 <Layout
-  title={`Programs & Services | ${site.brandName}`}
-  description={`Explore every way to work with ${site.founderName}: the 90-Day Transformation Challenge, 1:1 Private Mentorship, ${site.methodName} Certification, and ${site.communityName} membership.`}
-  pageUrl="https://auraandolives.com/services/"
-  ogImage="https://auraandolives.com/assets/images/og/services-og.webp"
+  title={`Programs | ${site.brandName}`}
+  description={`Explore the programs for working with ${site.founderName}: the 90-day Wellness Warrior Challenge and the Yoga Sadhana membership, both built on ${site.methodName}.`}
+  pageUrl="https://auraandolives.com/programs/"
+  ogImage="https://auraandolives.com/assets/images/og/programs-og.webp"
 >
   <section
     class="hero-bg hero-photo-bg pt-28 pb-16 sm:pt-36 sm:pb-20"
-    style="--hero-image: url('/assets/images/heroes/services-hero.webp'); --hero-position: center 25%;"
+    style="--hero-image: url('/assets/images/heroes/programs-hero.webp'); --hero-position: center 25%;"
   >
     <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
       <div
@@ -27,18 +27,19 @@ import { site } from "../../data/site";
       <h1
         class="fade-in font-display text-4xl sm:text-5xl font-800 leading-[1.1] text-cream-50"
       >
-        Every path leads to the same fused method.
+        Transform in 90 days. Sustain it for life.
       </h1>
       <p
         class="fade-in mt-6 text-cream-200/85 leading-relaxed text-base sm:text-lg"
       >
-        Whether you want a guided cohort, private attention, a credential, or
-        ongoing community, choose the format that fits where you are right now.
+        Start with the Wellness Warrior Challenge to rebuild your body in 90
+        days, or join Yoga Sadhana for daily practice and ongoing
+        accountability. Both are built on the Yogi Recomposition Method.
       </p>
     </div>
   </section>
 
-  <ServicesGrid showHeader={false} />
+  <ProgramsGrid showHeader={false} />
 
   <CTASection
     heading="Not sure which is right for you?"

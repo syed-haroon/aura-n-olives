@@ -1,15 +1,15 @@
 ---
 import { Flame, HeartHandshake, BadgeCheck, Users } from "@lucide/astro";
-import type { Service } from "../data/services";
+import type { Program } from "../data/programs";
 
 interface Props {
-  service: Service;
+  program: Program;
 }
 
-const { service } = Astro.props as Props;
+const { program } = Astro.props as Props;
 
 const ICONS: Record<string, any> = { Flame, HeartHandshake, BadgeCheck, Users };
-const Icon = ICONS[service.icon] ?? Flame;
+const Icon = ICONS[program.icon] ?? Flame;
 
 const accentClasses: Record<string, string> = {
   gold: "bg-gold-500 text-forest-950",
@@ -19,15 +19,15 @@ const accentClasses: Record<string, string> = {
 ---
 
 <a
-  href={`/services/${service.slug}`}
+  href={`/programs/${program.slug}`}
   class="fade-in group flex flex-col bg-white rounded-2xl border border-forest-900/8 p-6 hover:shadow-soft hover:-translate-y-1 transition-all"
 >
-  <div class={`h-11 w-11 rounded-full flex items-center justify-center mb-5 ${accentClasses[service.accent]}`}>
+  <div class={`h-11 w-11 rounded-full flex items-center justify-center mb-5 ${accentClasses[program.accent]}`}>
     <Icon class="w-5 h-5" stroke-width={2} />
   </div>
-  <span class="text-[11px] font-600 tracking-[0.15em] uppercase text-gold-600 mb-2">{service.category}</span>
-  <h3 class="font-display text-xl font-700 text-forest-950 mb-2 leading-snug">{service.name}</h3>
-  <p class="text-sm text-forest-700 leading-relaxed mb-5 flex-1">{service.cardBlurb}</p>
+  <span class="text-[11px] font-600 tracking-[0.15em] uppercase text-gold-600 mb-2">{program.category}</span>
+  <h3 class="font-display text-xl font-700 text-forest-950 mb-2 leading-snug">{program.name}</h3>
+  <p class="text-sm text-forest-700 leading-relaxed mb-5 flex-1">{program.cardBlurb}</p>
   <span class="inline-flex items-center gap-2 text-forest-900 font-600 text-sm group-hover:text-gold-600 transition-colors">
     Learn more
     <span class="transition-transform group-hover:translate-x-1" aria-hidden="true">→</span>

@@ -118,7 +118,7 @@ const logo = site.logo;
 const waLink = buildWhatsAppLink(`Hi Reshma, I'm interested in ${site.brandName}, could you tell me more?`);
 
 const navLinks = [
-  { href: '/services', label: 'Services' },
+  { href: '/programs', label: 'Programs' },
   { href: '/results', label: 'Results' },
   { href: '/about', label: 'About' },
   { href: '/#faq', label: 'FAQ' },

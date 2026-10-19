@@ -3,55 +3,55 @@ import { Flower2, Wind, Apple, Dumbbell, Check } from "@lucide/astro";
 import Layout from "../../layouts/Layout.astro";
 import FaqSection from "../../components/FaqSection.astro";
 import CTASection from "../../components/CTASection.astro";
-import { SERVICES, getAllServiceSlugs, getServiceBySlug, type Service } from "../../data/services";
+import { PROGRAMS, getAllProgramSlugs, getProgramBySlug, type Program } from "../../data/programs";
 import { site, buildWhatsAppLink } from "../../data/site";
 
 export async function getStaticPaths() {
-  return getAllServiceSlugs().map((slug) => ({
+  return getAllProgramSlugs().map((slug) => ({
     params: { slug },
-    props: { service: getServiceBySlug(slug) },
+    props: { program: getProgramBySlug(slug) },
   }));
 }
 
 interface Props {
-  service: Service | undefined;
+  program: Program | undefined;
 }
 
-const { service } = Astro.props as Props;
+const { program } = Astro.props as Props;
 
-if (!service) {
-  return Astro.redirect("/services");
+if (!program) {
+  return Astro.redirect("/programs");
 }
 
-const pageTitle = `${service.name} | ${site.brandName}`;
-const pageDesc = `${service.tagline}. ${service.heroDescription}`;
-const pageUrl = `${site.siteUrl}/services/${service.slug}`;
+const pageTitle = `${program.name} | ${site.brandName}`;
+const pageDesc = `${program.tagline}. ${program.heroDescription}`;
+const pageUrl = `${site.siteUrl}/programs/${program.slug}`;
 
 const PILLAR_ICONS: Record<string, any> = { Yoga: Flower2, Pranayama: Wind, "Quantified Nutrition Diet": Apple, "Strength Training": Dumbbell };
 
-const waLink = buildWhatsAppLink(`Hi Reshma, I'd like to know more about ${service.name}.`);
+const waLink = buildWhatsAppLink(`Hi Reshma, I'd like to know more about ${program.name}.`);
 
-const otherServices = SERVICES.filter((s) => s.slug !== service.slug);
+const otherPrograms = PROGRAMS.filter((s) => s.slug !== program.slug);
 
-const SERVICE_HERO_MEDIA: Record<string, { src: string; alt: string; position?: string }> = {
+const PROGRAM_HERO_MEDIA: Record<string, { src: string; alt: string; position?: string }> = {
   'wellness-warrior-challenge': {
-    src: '/assets/images/services/challenge-hero.webp',
+    src: '/assets/images/programs/challenge-hero.webp',
     alt: 'Reshma leading an energizing yoga-and-strength transformation session with Indian women students.',
     position: 'center top',
   },
-  'membership-community': {
-    src: '/assets/images/services/membership-hero.webp',
+  'yoga-sadhana': {
+    src: '/assets/images/programs/membership-hero.webp',
     alt: 'Reshma sitting with her wellness community in a warm studio circle.',
     position: 'center top',
   },
 };
 
-const heroMedia = SERVICE_HERO_MEDIA[service.slug];
-const SERVICE_OG_MEDIA: Record<string, string> = {
+const heroMedia = PROGRAM_HERO_MEDIA[program.slug];
+const PROGRAM_OG_MEDIA: Record<string, string> = {
   'wellness-warrior-challenge': 'https://auraandolives.com/assets/images/og/challenge-og.webp',
-  'membership-community': 'https://auraandolives.com/assets/images/og/membership-og.webp',
+  'yoga-sadhana': 'https://auraandolives.com/assets/images/og/membership-og.webp',
 };
-const pageOgImage = SERVICE_OG_MEDIA[service.slug] ?? 'https://auraandolives.com/assets/images/og/services-og.webp';
+const pageOgImage = PROGRAM_OG_MEDIA[program.slug] ?? 'https://auraandolives.com/assets/images/og/programs-og.webp';
 ---
 
 <Layout title={pageTitle} description={pageDesc} pageUrl={pageUrl} ogImage={pageOgImage} ogType="website">
@@ -64,16 +64,16 @@ const pageOgImage = SERVICE_OG_MEDIA[service.slug] ?? 'https://auraandolives.com
     <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
       <div class="fade-in inline-flex items-center gap-2 mb-5 rounded-full border border-gold-400/30 bg-gold-400/10 px-4 py-1.5">
         <span class="h-1.5 w-1.5 rounded-full bg-gold-400"></span>
-        <span class="text-xs font-600 tracking-[0.15em] uppercase text-gold-300">{service.category}</span>
+        <span class="text-xs font-600 tracking-[0.15em] uppercase text-gold-300">{program.category}</span>
       </div>
       <h1 class="fade-in font-display text-4xl sm:text-5xl font-800 leading-[1.1] text-cream-50">
-        {service.name}
+        {program.name}
       </h1>
-      <p class="fade-in mt-4 text-gold-300 font-600 text-lg">{service.tagline}</p>
+      <p class="fade-in mt-4 text-gold-300 font-600 text-lg">{program.tagline}</p>
       <p class="fade-in mt-6 text-cream-200/85 leading-relaxed text-base sm:text-lg max-w-2xl mx-auto">
-        {service.heroDescription}
+        {program.heroDescription}
       </p>
-      <p class="fade-in mt-4 text-xs tracking-wide uppercase text-cream-200/60">{service.format}</p>
+      <p class="fade-in mt-4 text-xs tracking-wide uppercase text-cream-200/60">{program.format}</p>
 
       <div class="fade-in mt-8 flex flex-col sm:flex-row gap-3 justify-center">
         <a
@@ -82,7 +82,7 @@ const pageOgImage = SERVICE_OG_MEDIA[service.slug] ?? 'https://auraandolives.com
           rel="noopener noreferrer"
           class="inline-flex items-center justify-center gap-2 bg-gold-500 hover:bg-gold-400 text-forest-950 font-700 px-6 py-3.5 rounded-full transition-colors text-sm"
         >
-          {service.ctaLabel}
+          {program.ctaLabel}
         </a>
         <a
           href="#apply"
@@ -100,7 +100,7 @@ const pageOgImage = SERVICE_OG_MEDIA[service.slug] ?? 'https://auraandolives.com
       <h2 class="fade-in font-display text-2xl sm:text-3xl font-700 text-forest-950 text-center mb-4">Is this for you?</h2>
       <p class="fade-in text-center text-forest-600 mb-10 max-w-xl mx-auto text-sm">This program is built for:</p>
       <div class="grid sm:grid-cols-2 gap-4">
-        {service.idealFor.map((item) => (
+        {program.idealFor.map((item) => (
           <div class="fade-in flex items-start gap-3 bg-cream-100 rounded-2xl p-5">
             <Check class="w-5 h-5 text-gold-600 shrink-0 mt-0.5" stroke-width={2.5} />
             <p class="text-sm text-forest-800 leading-relaxed">{item}</p>
@@ -115,7 +115,7 @@ const pageOgImage = SERVICE_OG_MEDIA[service.slug] ?? 'https://auraandolives.com
     <div class="max-w-3xl mx-auto px-4 sm:px-6">
       <h2 class="fade-in font-display text-2xl sm:text-3xl font-700 text-forest-950 text-center mb-10">You might recognize yourself here</h2>
       <div class="space-y-3">
-        {service.painPoints.map((point) => (
+        {program.painPoints.map((point) => (
           <div class="fade-in flex items-start gap-3 bg-white rounded-2xl border border-forest-900/8 p-5">
             <span class="mt-1 shrink-0 h-5 w-5 rounded-full bg-gold-100 text-gold-700 text-xs font-700 flex items-center justify-center">✓</span>
             <p class="text-sm text-forest-800 leading-relaxed">{point}</p>
@@ -131,7 +131,7 @@ const pageOgImage = SERVICE_OG_MEDIA[service.slug] ?? 'https://auraandolives.com
       <h2 class="fade-in font-display text-2xl sm:text-3xl font-700 text-center mb-3">Built on {site.methodName}</h2>
       <p class="fade-in text-center text-cream-200/70 text-sm mb-12">The same four fused pillars, applied to this program</p>
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-        {service.pillars.map((pillar) => {
+        {program.pillars.map((pillar) => {
           const Icon = PILLAR_ICONS[pillar.title] ?? Flower2;
           return (
             <div class="fade-in bg-cream-50/5 border border-cream-50/10 rounded-2xl p-6">
@@ -153,7 +153,7 @@ const pageOgImage = SERVICE_OG_MEDIA[service.slug] ?? 'https://auraandolives.com
       <div class="fade-in">
         <h2 class="font-display text-2xl font-700 text-forest-950 mb-6">What you get</h2>
         <ul class="space-y-3">
-          {service.whatYouGet.map((item) => (
+          {program.whatYouGet.map((item) => (
             <li class="flex items-start gap-3 text-sm text-forest-800 leading-relaxed">
               <Check class="w-4 h-4 text-gold-600 shrink-0 mt-1" stroke-width={2.5} />
               {item}
@@ -164,7 +164,7 @@ const pageOgImage = SERVICE_OG_MEDIA[service.slug] ?? 'https://auraandolives.com
       <div class="fade-in">
         <h2 class="font-display text-2xl font-700 text-forest-950 mb-6">Outcomes you'll achieve</h2>
         <ul class="space-y-3">
-          {service.outcomes.map((item) => (
+          {program.outcomes.map((item) => (
             <li class="flex items-start gap-3 text-sm text-forest-800 leading-relaxed">
               <span class="w-4 h-4 rounded-full bg-forest-900 text-gold-400 text-[9px] font-700 flex items-center justify-center shrink-0 mt-1">★</span>
               {item}
@@ -175,13 +175,13 @@ const pageOgImage = SERVICE_OG_MEDIA[service.slug] ?? 'https://auraandolives.com
     </div>
   </section>
 
-  <FaqSection faqs={service.faqs} eyebrow="Before You Join" title={`Questions about ${service.shortName}`} bgClass="bg-cream-100" />
+  <FaqSection faqs={program.faqs} eyebrow="Before You Join" title={`Questions about ${program.shortName}`} bgClass="bg-cream-100" />
 
   <div id="apply">
     <CTASection
-      context={service.name}
-      heading={service.ctaLabel}
-      title={`Ready to join ${service.shortName}?`}
+      context={program.name}
+      heading={program.ctaLabel}
+      title={`Ready to join ${program.shortName}?`}
       description="Fill this in and Reshma's team will reach out on WhatsApp personally. No bots, no funnels."
     />
   </div>
@@ -191,8 +191,8 @@ const pageOgImage = SERVICE_OG_MEDIA[service.slug] ?? 'https://auraandolives.com
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
       <h2 class="fade-in font-display text-2xl font-700 text-forest-950 text-center mb-10">Explore other programs</h2>
       <div class="flex justify-center">
-        {otherServices.map((s) => (
-          <a href={`/services/${s.slug}`} class="fade-in block w-full sm:max-w-md bg-white rounded-2xl border border-forest-900/8 p-5 hover:shadow-soft hover:-translate-y-1 transition-all">
+        {otherPrograms.map((s) => (
+          <a href={`/programs/${s.slug}`} class="fade-in block w-full sm:max-w-md bg-white rounded-2xl border border-forest-900/8 p-5 hover:shadow-soft hover:-translate-y-1 transition-all">
             <span class="text-[10px] font-600 tracking-[0.15em] uppercase text-gold-600">{s.category}</span>
             <h3 class="font-display text-base font-700 text-forest-950 mt-1.5 mb-2">{s.name}</h3>
             <p class="text-xs text-forest-600 leading-relaxed">{s.cardBlurb}</p>
