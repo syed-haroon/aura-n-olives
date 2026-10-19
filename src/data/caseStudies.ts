@@ -50,7 +50,6 @@ export const CASE_STUDIES: CaseStudy[] = [
     pillarsUsed: ['Yoga', 'Pranayama', 'Quantified Nutrition Diet'],
     quote:
       "Thyroid health responds to lifestyle. Daily yoga, pranayama and a structured anti-inflammatory diet moved numbers that medication alone had struggled to shift, and she is living proof.",
-    relatedServiceSlug: 'private-mentorship',
     cardBlurb: 'A 65.7% drop in TSH in 4 weeks, through yoga, pranayama and nutrition, alongside her existing medication.',
   },
 ];

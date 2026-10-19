@@ -9,15 +9,17 @@ import ServicesGrid from "../components/ServicesGrid.astro";
 import TestimonialsSection from "../components/TestimonialsSection.astro";
 import FaqSection from "../components/FaqSection.astro";
 import CTASection from "../components/CTASection.astro";
-import { SERVICES } from "../data/services";
+import { getServiceBySlug } from "../data/services";
+
+const challenge = getServiceBySlug('wellness-warrior-challenge');
+const membership = getServiceBySlug('membership-community');
 
 const homeFaqs = [
-  SERVICES[0].faqs[0],
-  SERVICES[0].faqs[1],
-  SERVICES[0].faqs[3],
-  SERVICES[2].faqs[0],
-  SERVICES[3].faqs[2],
-];
+  challenge?.faqs[0],
+  challenge?.faqs[1],
+  challenge?.faqs[3],
+  membership?.faqs[0],
+].filter((faq) => faq !== undefined);
 ---
 
 <Layout pageUrl="https://auraandolives.com/" ogImage="https://auraandolives.com/assets/images/og/home-og.webp">

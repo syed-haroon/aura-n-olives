@@ -34,19 +34,9 @@ const waLink = buildWhatsAppLink(`Hi Reshma, I'd like to know more about ${servi
 const otherServices = SERVICES.filter((s) => s.slug !== service.slug);
 
 const SERVICE_HERO_MEDIA: Record<string, { src: string; alt: string; position?: string }> = {
-  '90-day-transformation-challenge': {
+  'wellness-warrior-challenge': {
     src: '/assets/images/services/challenge-hero.webp',
     alt: 'Reshma leading an energizing yoga-and-strength transformation session with Indian women students.',
-    position: 'center top',
-  },
-  'private-mentorship': {
-    src: '/assets/images/services/mentorship-hero.webp',
-    alt: 'Reshma providing one-on-one posture guidance to a private mentorship client.',
-    position: 'center top',
-  },
-  'certification-program': {
-    src: '/assets/images/services/certification-hero.webp',
-    alt: 'Reshma teaching a professional certification workshop to Indian yoga teachers.',
     position: 'center top',
   },
   'membership-community': {
@@ -58,9 +48,7 @@ const SERVICE_HERO_MEDIA: Record<string, { src: string; alt: string; position?: 
 
 const heroMedia = SERVICE_HERO_MEDIA[service.slug];
 const SERVICE_OG_MEDIA: Record<string, string> = {
-  '90-day-transformation-challenge': 'https://auraandolives.com/assets/images/og/challenge-og.webp',
-  'private-mentorship': 'https://auraandolives.com/assets/images/og/mentorship-og.webp',
-  'certification-program': 'https://auraandolives.com/assets/images/og/certification-og.webp',
+  'wellness-warrior-challenge': 'https://auraandolives.com/assets/images/og/challenge-og.webp',
   'membership-community': 'https://auraandolives.com/assets/images/og/membership-og.webp',
 };
 const pageOgImage = SERVICE_OG_MEDIA[service.slug] ?? 'https://auraandolives.com/assets/images/og/services-og.webp';
@@ -187,38 +175,7 @@ const pageOgImage = SERVICE_OG_MEDIA[service.slug] ?? 'https://auraandolives.com
     </div>
   </section>
 
-  <!-- Curriculum -->
-  {service.curriculum && (
-    <section class="py-16 sm:py-20 bg-cream-100">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6">
-        <h2 class="fade-in font-display text-2xl sm:text-3xl font-700 text-forest-950 text-center mb-12">The journey, phase by phase</h2>
-        <div class="space-y-8">
-          {service.curriculum.map((phase, i) => (
-            <div class="fade-in flex gap-5">
-              <div class="shrink-0 flex flex-col items-center">
-                <span class="h-9 w-9 rounded-full bg-forest-900 text-gold-400 flex items-center justify-center font-display font-700 text-sm">
-                  {i + 1}
-                </span>
-                {i < service.curriculum!.length - 1 && <span class="w-px flex-1 bg-forest-900/15 mt-2"></span>}
-              </div>
-              <div class="pb-2">
-                <h3 class="font-display text-lg font-700 text-forest-950 mb-2">{phase.phase}</h3>
-                <div class="flex flex-wrap gap-2">
-                  {phase.items.map((item) => (
-                    <span class="text-xs font-500 text-forest-700 bg-white border border-forest-900/10 rounded-full px-3 py-1.5">
-                      {item}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  )}
-
-  <FaqSection faqs={service.faqs} eyebrow="Before You Join" title={`Questions about ${service.shortName}`} bgClass={service.curriculum ? "bg-cream-50" : "bg-cream-100"} />
+  <FaqSection faqs={service.faqs} eyebrow="Before You Join" title={`Questions about ${service.shortName}`} bgClass="bg-cream-100" />
 
   <div id="apply">
     <CTASection
@@ -233,9 +190,9 @@ const pageOgImage = SERVICE_OG_MEDIA[service.slug] ?? 'https://auraandolives.com
   <section class="py-16 sm:py-20 bg-cream-50">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
       <h2 class="fade-in font-display text-2xl font-700 text-forest-950 text-center mb-10">Explore other programs</h2>
-      <div class="grid sm:grid-cols-3 gap-5">
+      <div class="flex justify-center">
         {otherServices.map((s) => (
-          <a href={`/services/${s.slug}`} class="fade-in block bg-white rounded-2xl border border-forest-900/8 p-5 hover:shadow-soft hover:-translate-y-1 transition-all">
+          <a href={`/services/${s.slug}`} class="fade-in block w-full sm:max-w-md bg-white rounded-2xl border border-forest-900/8 p-5 hover:shadow-soft hover:-translate-y-1 transition-all">
             <span class="text-[10px] font-600 tracking-[0.15em] uppercase text-gold-600">{s.category}</span>
             <h3 class="font-display text-base font-700 text-forest-950 mt-1.5 mb-2">{s.name}</h3>
             <p class="text-xs text-forest-600 leading-relaxed">{s.cardBlurb}</p>

@@ -3,11 +3,6 @@ export interface Pillar {
   description: string;
 }
 
-export interface CurriculumPhase {
-  phase: string;
-  items: string[];
-}
-
 export interface Faq {
   q: string;
   a: string;
@@ -28,7 +23,6 @@ export interface Service {
   pillars: Pillar[];
   whatYouGet: string[];
   outcomes: string[];
-  curriculum?: CurriculumPhase[];
   faqs: Faq[];
   ctaLabel: string;
   cardBlurb: string;
@@ -50,16 +44,16 @@ const FUSION_PILLARS: Pillar[] = [
   },
   {
     title: 'Strength Training',
-    description: 'Weights, Pilates and mobility drills integrated with asana, because a strong yogi is a safe yogi.',
+    description: 'Weights integrated with asana, because a strong yogi is a safe yogi.',
   },
 ];
 
 export const SERVICES: Service[] = [
   {
-    slug: '90-day-transformation-challenge',
-    name: 'The 90-Day Transformation Challenge',
-    shortName: '90-Day Challenge',
-    tagline: 'From Skinny Fat to Strong Yogi in 90 Days',
+    slug: 'wellness-warrior-challenge',
+    name: 'Wellness Warrior Challenge',
+    shortName: 'Wellness Warrior Challenge',
+    tagline: 'From Obese to Strong Yogi in 90 Days',
     category: 'Flagship Program',
     icon: 'Flame',
     accent: 'gold',
@@ -68,15 +62,15 @@ export const SERVICES: Service[] = [
     format: '90-day cohort · Online · Weekly live sessions + self-paced modules',
     idealFor: [
       'Yoga teachers who feel their body no longer matches their credentials',
-      'Yoga aspirants preparing for TTC who want to walk in strong, not self-conscious',
+      'Yoga aspirants, enthusiasts preparing for TTC who want to walk in strong, not body-conscious',
       'Teachers dealing with obesity, "skinny fat", inflexibility or low strength',
       'Anyone who has tried diets and generic fitness plans that ignored their yogic lifestyle',
     ],
     painPoints: [
       'Belly fat or a "skinny fat" physique despite teaching yoga daily',
       "Can't confidently demonstrate arm balances, inversions or strength-based asanas",
-      'Stiffness, low stamina, or pelvic floor weakness that yoga alone hasn\'t fixed',
-      'Confusion between fad diets, "satvik-only" beliefs, and real nutrition science',
+      'Stiffness, low stamina, or pelvic floor weakness',
+      'Confusion between fad diets, and real nutrition science',
       'The quiet fear that an unfit body is costing credibility, students and income',
     ],
     pillars: FUSION_PILLARS,
@@ -95,28 +89,6 @@ export const SERVICES: Service[] = [
       'Elevate your teaching authority with deeper anatomy and correction skills',
       'Restore the energy, confidence and presence your students already look up to',
       'Grow your yoga career, as your transformed body becomes your strongest marketing',
-    ],
-    curriculum: [
-      {
-        phase: 'Awareness',
-        items: ['Body Decoded', 'Skinny Fat Truth', 'Anatomy Awakening', 'Movement Mechanics'],
-      },
-      {
-        phase: 'Fuel',
-        items: ['Nutrition Numbers', 'Gut Wisdom', 'Protein Power', 'Meal Mastery'],
-      },
-      {
-        phase: 'Train',
-        items: ['Strength Foundations', 'Weights Meet Yoga', 'Pilates Fusion', 'Mobility Magic', 'Fat-Burn Vinyasa'],
-      },
-      {
-        phase: 'Heal',
-        items: ['Breath Metabolism', 'Hormone Harmony', 'Core Restore', 'Therapeutic Touch'],
-      },
-      {
-        phase: 'Master',
-        items: ['Habit Architecture', 'Mirror Mindset', 'Track Transform', 'Ninety-Day Blueprint'],
-      },
     ],
     faqs: [
       {
@@ -141,137 +113,7 @@ export const SERVICES: Service[] = [
       },
     ],
     ctaLabel: 'Join the Challenge',
-    cardBlurb: 'The signature 90-day cohort that fuses Yoga, Pranayama, Nutrition & Strength into one system.',
-  },
-  {
-    slug: 'private-mentorship',
-    name: '1:1 Private Mentorship',
-    shortName: 'Private Mentorship',
-    tagline: 'Personal, high-touch guidance for your exact body and life',
-    category: 'Private Coaching',
-    icon: 'HeartHandshake',
-    accent: 'olive',
-    heroDescription:
-      'For yoga teachers who want the Yogi Recomposition Method built entirely around them: their body, their health history, their schedule, with direct, personal access to Reshma every step of the way.',
-    format: '3 or 6-month private mentorship · 1-on-1 video calls · Direct WhatsApp access',
-    idealFor: [
-      'Teachers with a specific health history (prolapse, hernia, thyroid, PCOS) needing a tailored protocol',
-      'Teachers who want the fastest, most individualized results',
-      'Senior teachers or studio owners who want discretion and undivided attention',
-      'Anyone who has outgrown group programs and wants a dedicated mentor',
-    ],
-    painPoints: [
-      'A body story that feels too complex or specific for a group program',
-      'Wanting direct access to ask questions in real time, not wait for a weekly call',
-      'Needing a plan that bends around an unpredictable teaching and travel schedule',
-      'Wanting privacy while working through a sensitive health or body-image journey',
-    ],
-    pillars: FUSION_PILLARS,
-    whatYouGet: [
-      'A private onboarding assessment covering body composition, health history and goals',
-      'A fully custom Yoga + Strength Training + Nutrition plan, rebuilt as you progress',
-      'Weekly private 1:1 video calls with Reshma',
-      'Direct WhatsApp access for real-time questions and form checks',
-      'Therapeutic protocols for specific conditions like prolapse, hernia or thyroid',
-    ],
-    outcomes: [
-      'A body composition and strength plan built only for you',
-      'Faster, more precise results than a group format allows',
-      'Confidence to manage your specific health condition through movement, not despite it',
-      'A direct mentor relationship for ongoing accountability',
-    ],
-    faqs: [
-      {
-        q: 'How is this different from the 90-Day Challenge?',
-        a: 'The Challenge is a structured cohort program with a set curriculum. Private Mentorship is fully custom: your plan, pace and check-ins are rebuilt around you, with direct 1:1 access.',
-      },
-      {
-        q: 'Do I need to have done the 90-Day Challenge first?',
-        a: 'No, many private mentorship clients start here directly, especially if they have a specific condition or prefer one-on-one attention from day one.',
-      },
-      {
-        q: 'How much access do I really get?',
-        a: "Weekly video calls plus direct WhatsApp access between sessions for quick questions, form checks and accountability nudges. This is a genuinely personal mentorship, not a course with your name on it.",
-      },
-      {
-        q: 'What if I have a complex medical history?',
-        a: "Share it during your onboarding assessment. Reshma's own healing journey through pelvic prolapse and hiatus hernia shapes how she builds therapeutic, condition-aware protocols.",
-      },
-    ],
-    ctaLabel: 'Apply for Mentorship',
-    cardBlurb: 'A fully personalized version of the method, with direct 1:1 access.',
-  },
-  {
-    slug: 'certification-program',
-    name: 'Yogi Recomposition Method™ Certification',
-    shortName: 'Certification',
-    tagline: 'Become certified to teach the method that transformed you',
-    category: 'Certification',
-    icon: 'BadgeCheck',
-    accent: 'forest',
-    heroDescription:
-      "For certified yoga teachers ready to go deeper than any generic training: a certification in the Yogi Recomposition Method so you can teach body recomposition science to your own students, and open a new stream of income and authority.",
-    format: '8-week certification · Online modules + live practicum · For certified yoga teachers',
-    idealFor: [
-      'Certified yoga teachers who want to stand out from generalist instructors',
-      'Studio owners who want to offer body-transformation programs under their own brand',
-      'Teachers who have completed (or are completing) their own transformation and want to teach it',
-      "Yoga trainers who want to master anatomy, biomechanics and nutrition at a technical level",
-    ],
-    painPoints: [
-      'Feeling like "just another yoga teacher" in a crowded, look-alike market',
-      "Wanting a second income stream that doesn't mean teaching more back-to-back classes",
-      "Knowing the asanas but not fully understanding the anatomy or biomechanics behind them",
-      'Wanting a credential that reflects real technical depth, not a weekend workshop',
-    ],
-    pillars: FUSION_PILLARS,
-    whatYouGet: [
-      'The complete Yogi Recomposition Method training manual and frameworks',
-      'Deep-dive modules on anatomy, biomechanics and asana-to-muscle mapping',
-      'Correction and assessment protocols to safely coach body recomposition',
-      'A licensed certification to teach the method to your own students',
-      'Ongoing access to a mentor community of certified practitioners',
-    ],
-    outcomes: [
-      'A recognized certification that elevates you above generalist yoga instructors',
-      'The technical skill to explain exactly which asana works which part of the body',
-      'A ready-to-teach curriculum you can offer under your own studio or brand',
-      'Positioning as a "teacher of teachers" in your local or online yoga community',
-    ],
-    curriculum: [
-      {
-        phase: 'Foundations',
-        items: ['Anatomy Awakening', 'Movement Mechanics', 'Asana Mapping', 'Fix Your Asana'],
-      },
-      {
-        phase: 'Science',
-        items: ['Nutrition Numbers', 'Gut Wisdom', 'Hormone Harmony', 'Breath Metabolism'],
-      },
-      {
-        phase: 'Practicum',
-        items: ['Strength Foundations', 'Weights Meet Yoga', 'Therapeutic Touch', 'Injury-Proof Yogi'],
-      },
-      {
-        phase: 'Teaching the Method',
-        items: ['Coaching Frameworks', 'Client Assessment', 'Building Your Own Cohort', 'Certification Practicum'],
-      },
-    ],
-    faqs: [
-      {
-        q: 'Do I need to be a certified yoga teacher to join?',
-        a: 'Yes, this certification builds on an existing yoga teaching foundation (200hr/500hr TTC or equivalent) and goes deeper into body recomposition science.',
-      },
-      {
-        q: 'Can I actually use this to earn?',
-        a: 'Yes, certified graduates are licensed to teach the Yogi Recomposition Method framework to their own students, whether in a studio, online, or as a specialised offering.',
-      },
-      {
-        q: 'Is this theory-heavy or practical?',
-        a: "Both. You'll go deep into anatomy and biomechanics, but the certification closes with a live practicum where you actually coach using the method under guidance.",
-      },
-    ],
-    ctaLabel: 'Apply for Certification',
-    cardBlurb: 'Get certified in the method and start teaching body recomposition to your own students.',
+    cardBlurb: 'The signature 90-day cohort that fuses Yoga, Pranayama, Nutrition & Strength training into one system.',
   },
   {
     slug: 'membership-community',
@@ -317,10 +159,6 @@ export const SERVICES: Service[] = [
       {
         q: 'What does a typical month look like?',
         a: 'Daily live classes, one nutrition audit, one community challenge, and ongoing support inside the private group, designed to fit around a full teaching schedule.',
-      },
-      {
-        q: 'Can I cancel anytime?',
-        a: 'Yes, it is a monthly membership with no long-term lock-in. Most members choose to stay for the community and consistency, not because they have to.',
       },
     ],
     ctaLabel: 'Join the Collective',

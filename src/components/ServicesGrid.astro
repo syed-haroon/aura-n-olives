@@ -20,7 +20,7 @@ const { showHeader = true } = Astro.props as Props;
       />
     )}
 
-    <div class="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+    <div class="mt-14 grid sm:grid-cols-2 gap-5 max-w-4xl mx-auto">
       {SERVICES.map((service) => <ServiceCard service={service} />)}
     </div>
   </div>
