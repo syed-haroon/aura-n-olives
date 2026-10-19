@@ -28,23 +28,42 @@ export interface Program {
   cardBlurb: string;
 }
 
-const FUSION_PILLARS: Pillar[] = [
+const WELLNESS_SEQUENCE: Pillar[] = [
   {
-    title: 'Yoga',
+    title: 'Assess',
     description:
-      'Classical asana practice rooted in BKS Iyengar & Krishnamacharya lineage: precise alignment, not just movement.',
+      'Begin with your body composition, movement patterns, health history and daily habits, so the plan starts from where you are.',
+  },
+  {
+    title: 'Nourish',
+    description: 'Build a quantified nutrition approach around your body, goals and vegetarian lifestyle without restrictive fad diets.',
+  },
+  {
+    title: 'Strengthen',
+    description: 'Combine yoga, mobility and progressive resistance training to develop a body that is flexible, stable and strong.',
+  },
+  {
+    title: 'Integrate',
+    description: 'Turn movement, nutrition, breathwork and accountability into a sustainable routine you can carry beyond 90 days.',
+  },
+];
+
+const SADHANA_PILLARS: Pillar[] = [
+  {
+    title: 'Guided Asana Practice',
+    description: 'Live, progressive sessions that deepen alignment, mobility and confidence through consistent practice.',
   },
   {
     title: 'Pranayama',
-    description: 'Breathwork for metabolism, energy and nervous-system recovery: the bridge between body and stillness.',
+    description: 'Daily breathwork to cultivate steadiness, energy and a calmer relationship with body and mind.',
   },
   {
-    title: 'Quantified Nutrition Diet',
-    description: 'Real macros, real gut science, vegetarian-friendly. No fad diets, no satvik-only guesswork.',
+    title: 'Consistent Routine',
+    description: 'Five guided practice days each week, with three daily batch options that make showing up realistic.',
   },
   {
-    title: 'Strength Training',
-    description: 'Weights integrated with asana, because a strong yogi is a safe yogi.',
+    title: 'Supported Progression',
+    description: 'Personal corrections, community accountability and a clear path from foundational practice to the next level.',
   },
 ];
 
@@ -58,7 +77,7 @@ export const PROGRAMS: Program[] = [
     icon: 'Flame',
     accent: 'gold',
     heroDescription:
-      "The flagship cohort program built on the Yogi Recomposition Method: fusing Yoga, Pranayama, Quantified Nutrition Diet & Strength Training into one 90-day system, so you finally embody the transformation you teach.",
+      "The flagship cohort program built on the Yogi Recomposition Method: fusing Yoga, Pranayama, Quantified Nutrition Diet & Strength Training into one 90-day system, so you finally embody the transformation you deserve.",
     format: '90-day cohort · Online · Weekly live sessions + self-paced modules',
     idealFor: [
       'Yoga teachers who feel their body no longer matches their credentials',
@@ -73,7 +92,7 @@ export const PROGRAMS: Program[] = [
       'Confusion between fad diets, and real nutrition science',
       'The quiet fear that an unfit body is costing credibility, students and income',
     ],
-    pillars: FUSION_PILLARS,
+    pillars: WELLNESS_SEQUENCE,
     whatYouGet: [
       'Daily live yoga sessions',
       'A personalized quantified-nutrition plan built for a vegetarian, yogic lifestyle',
@@ -97,7 +116,7 @@ export const PROGRAMS: Program[] = [
       },
       {
         q: "I teach all day and manage a family, do I have time for this?",
-        a: 'The program is designed in 45-minute daily blocks with family-friendly, leftover-proof meal plans, built by a mother who teaches, cooks and trains within the same real-life constraints you do.',
+        a: 'The program is designed in 60-minute daily blocks with family-friendly, leftover-proof meal plans, built by a mother who teaches, cooks and trains within the same real-life constraints you do.',
       },
       {
         q: "I've tried diets before and nothing worked. Why would this be different?",
@@ -127,28 +146,28 @@ export const PROGRAMS: Program[] = [
       'A three months program where the serious yoga aspirants and enthusiasts would practice yoga & pranayama which helps not only  to keep up own health at it\’s best but also acquire a skill and gets ready to be a yoga practitioner to teach yoga for others.',
     format: '3 batches daily · 60 minutes per batch · 5 days a week',
     idealFor: [
-      'Graduates of the 90-Day Challenge who want to sustain their results',
-      'Teachers who want a lower-commitment way to start their transformation journey',
-      'Anyone craving a community of like-minded, non-judgmental yoga teachers',
-      'Teachers who do better with ongoing accountability than a one-time program',
+      'Graduates of the 90-Day Wellness Warrior Challenge who want to sustain their results',
+      'Yoga aspirants who wants to kick start their yoga journey',
+      'Anyone craving a community of like-minded, non-judgmental yoga practitioners',
+      'Yoga enthusiasts who wants to level up their practice to intermediate level & above',
     ],
     painPoints: [
       'Losing momentum and old habits creeping back after a program ends',
-      'Feeling isolated in a fitness or nutrition journey with no one who understands the yogic lifestyle',
+      'Feeling isolated in a fitness or nutrition journey with no one who understands the best lifestyle',
       'Needing lighter-touch, ongoing accountability rather than another intensive program',
       'Wanting a values-led space instead of a toxic, comparison-driven fitness group',
     ],
-    pillars: FUSION_PILLARS,
+    pillars: SADHANA_PILLARS,
     whatYouGet: [
       'Daily live yoga classes with the community',
-      'A monthly nutrition audit to keep quantified eating on track',
-      'A fresh mini-challenge every month to keep momentum alive',
+      'Three live batches each day, with 60-minute sessions, five days a week',
+      'Every batch is led personally by Reshma',
       'A private, values-led community space: kind, humble, judgment-free',
     ],
     outcomes: [
       'Sustained body composition and strength gains, month after month',
       'A genuine sense of belonging with fellow yoga teachers on the same path',
-      'Continued growth in technical knowledge: nutrition, anatomy, therapeutic yoga',
+      'Continued growth in technical knowledge: anatomy, therapeutic yoga',
       'Accountability that keeps discipline a daily practice, not a 90-day sprint',
     ],
     faqs: [
@@ -158,7 +177,7 @@ export const PROGRAMS: Program[] = [
       },
       {
         q: 'What does a typical month look like?',
-        a: 'Daily live classes, one nutrition audit, one community challenge, and ongoing support inside the private group, designed to fit around a full teaching schedule.',
+        a: 'Daily live classes, one community challenge, and ongoing support inside the private group, designed to fit around a full teaching schedule.',
       },
     ],
     ctaLabel: 'Join Yoga Sadhana',

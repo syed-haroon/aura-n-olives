@@ -1,5 +1,5 @@
 ---
-import { Flower2, Wind, Apple, Dumbbell, Check } from "@lucide/astro";
+import { Flower2, Wind, Apple, Dumbbell, CalendarCheck, Route, ClipboardCheck, Check } from "@lucide/astro";
 import Layout from "../../layouts/Layout.astro";
 import FaqSection from "../../components/FaqSection.astro";
 import CTASection from "../../components/CTASection.astro";
@@ -29,12 +29,25 @@ const pageTitle = `${program.name} | ${site.brandName}`;
 const pageDesc = `${program.tagline}. ${program.heroDescription}`;
 const pageUrl = `${site.siteUrl}/programs/${program.slug}`;
 
-const PILLAR_ICONS: Record<string, any> = { Yoga: Flower2, Pranayama: Wind, "Quantified Nutrition Diet": Apple, "Strength Training": Dumbbell };
+const PILLAR_ICONS: Record<string, any> = {
+  Yoga: Flower2,
+  'Guided Asana Practice': Flower2,
+  Pranayama: Wind,
+  'Quantified Nutrition Diet': Apple,
+  'Strength Training': Dumbbell,
+  'Consistent Routine': CalendarCheck,
+  'Supported Progression': Route,
+  Assess: ClipboardCheck,
+  Nourish: Apple,
+  Strengthen: Dumbbell,
+  Integrate: Route,
+};
 
 const waLink = buildWhatsAppLink(`Hi Reshma, I'd like to know more about ${program.name}.`);
 
 const otherPrograms = PROGRAMS.filter((s) => s.slug !== program.slug);
 const testimonial = program.slug === 'wellness-warrior-challenge' ? TESTIMONIALS[1] : TESTIMONIALS[0];
+const isYogaSadhana = program.slug === 'yoga-sadhana';
 
 const PROGRAM_HERO_MEDIA: Record<string, { src: string; alt: string; position?: string }> = {
   'wellness-warrior-challenge': {
@@ -128,11 +141,17 @@ const pageOgImage = PROGRAM_OG_MEDIA[program.slug] ?? 'https://auraandolives.com
     </div>
   </section>
 
-  <!-- Method pillars -->
+  <!-- Program framework -->
   <section class="py-16 sm:py-20 bg-forest-950 text-cream-50">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      <h2 class="fade-in font-display text-2xl sm:text-3xl font-700 text-center mb-3">Built on {site.methodName}</h2>
-      <p class="fade-in text-center text-cream-200/70 text-sm mb-12">The same four fused pillars, applied to this program</p>
+      <h2 class="fade-in font-display text-2xl sm:text-3xl font-700 text-center mb-3">
+        {isYogaSadhana ? 'A practice rhythm you can sustain' : 'Your 90-day transformation, made actionable'}
+      </h2>
+      <p class="fade-in text-center text-cream-200/70 text-sm mb-12">
+        {isYogaSadhana
+          ? 'Four foundations that turn intention into a steady, evolving yoga practice'
+          : 'Four stages turn the method into a clear journey from awareness to lasting integration.'}
+      </p>
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
         {program.pillars.map((pillar) => {
           const Icon = PILLAR_ICONS[pillar.title] ?? Flower2;

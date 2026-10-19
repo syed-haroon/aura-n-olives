@@ -1,6 +1,6 @@
 ---
 import { ExternalLink } from '@lucide/astro';
-import { LINKEDIN_RECOMMENDATIONS_URL, TESTIMONIALS } from '../data/testimonials';
+import { INSTAGRAM_TESTIMONIALS_URL, LINKEDIN_RECOMMENDATIONS_URL, TESTIMONIALS } from '../data/testimonials';
 
 const [featured, ...supporting] = TESTIMONIALS;
 ---
@@ -66,7 +66,7 @@ const [featured, ...supporting] = TESTIMONIALS;
       </div>
     </div>
 
-    <div class="fade-in mt-12 border-t border-cream-50/15 pt-6 text-center">
+    <div class="fade-in mt-12 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-7 border-t border-cream-50/15 pt-6 text-center">
       <a
         href={LINKEDIN_RECOMMENDATIONS_URL}
         target="_blank"
@@ -75,6 +75,17 @@ const [featured, ...supporting] = TESTIMONIALS;
       >
         <ExternalLink class="h-4 w-4" />
         View all recommendations on LinkedIn
+        <span class="transition-transform group-hover:translate-x-0.5" aria-hidden="true">↗</span>
+      </a>
+      <span class="hidden sm:block h-4 w-px bg-cream-50/20" aria-hidden="true"></span>
+      <a
+        href={INSTAGRAM_TESTIMONIALS_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group inline-flex items-center gap-2 text-sm font-600 text-gold-300 hover:text-gold-400"
+      >
+        <ExternalLink class="h-4 w-4" />
+        Watch client stories on Instagram
         <span class="transition-transform group-hover:translate-x-0.5" aria-hidden="true">↗</span>
       </a>
     </div>

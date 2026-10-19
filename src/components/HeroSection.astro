@@ -13,15 +13,31 @@ const waLink = buildWhatsAppLink(`Hi Reshma, I'd like to know more about the 90-
       </div>
 
       <h1 class="font-display text-4xl sm:text-5xl lg:text-[3.4rem] font-800 leading-[1.1] text-cream-50">
-        Embody the transformation <span class="text-gold-400 italic">you teach.</span>
+        Embody the transformation <span class="text-gold-400 italic">you deserve.</span>
       </h1>
 
       <p class="mt-6 text-base sm:text-lg text-cream-200/85 leading-relaxed max-w-xl">
-        We help yoga teachers and yoga aspirants beat obesity and "skinny fat" through
-        <strong class="text-gold-300 font-600"> {site.methodName}</strong>: Yoga, Pranayama, Quantified Nutrition Diet &amp; Strength Training, fused into one system.
+        Helping yoga aspirants, enthusiasts and yoga teachers overcome obesity and skinny fat through
+        <strong class="text-gold-300 font-600"> {site.methodName}</strong>:
       </p>
 
-      <div class="mt-8 flex flex-col sm:flex-row gap-3">
+      <ul class="mt-6 grid grid-cols-4 max-w-lg" aria-label="The four pillars of the Yogi Recomposition Method">
+        {[
+          { label: 'Yoga', fullLabel: 'Yoga' },
+          { label: 'Pranayama', fullLabel: 'Pranayama' },
+          { label: 'Nutrition', fullLabel: 'Quantified Nutrition Diet' },
+          { label: 'Strength', fullLabel: 'Strength Training' },
+        ].map((pillar, index) => (
+          <li class:list={['px-2 text-center', index > 0 && 'border-l border-gold-400/30']}>
+            <span aria-hidden="true" class="font-display text-sm sm:text-base font-700 text-cream-50">
+              {pillar.label}
+            </span>
+            <span class="sr-only">{pillar.fullLabel}</span>
+          </li>
+        ))}
+      </ul>
+
+      <div class="mt-9 flex flex-col sm:flex-row gap-3">
         <a
           href={waLink}
           target="_blank"
@@ -38,13 +54,6 @@ const waLink = buildWhatsAppLink(`Hi Reshma, I'd like to know more about the 90-
         </a>
       </div>
 
-      <div class="mt-10 grid grid-cols-4 gap-3 max-w-md">
-        {['Yoga', 'Pranayama', 'Quantified Nutrition Diet', 'Strength Training'].map((word) => (
-          <div class="text-center">
-            <div class="text-cream-50 font-display text-sm font-700">{word}</div>
-          </div>
-        ))}
-      </div>
     </div>
 
     <div class="fade-in relative">
@@ -60,9 +69,9 @@ const waLink = buildWhatsAppLink(`Hi Reshma, I'd like to know more about the 90-
           decoding="async"
         />
       </div>
-      <div class="absolute -bottom-6 -left-6 hidden sm:block bg-cream-50 rounded-2xl shadow-soft px-5 py-4 max-w-[220px]">
+      <div class="absolute -bottom-6 -left-6 hidden sm:block bg-cream-50 sm:rounded-r-2xl lg:rounded-2xl shadow-soft px-5 py-4 max-w-[270px]">
         <div class="font-display text-2xl font-800 text-forest-900">90 Days</div>
-        <div class="text-xs text-forest-600 mt-0.5">From skinny fat to strong, confident yogi</div>
+        <div class="text-xs text-forest-600 mt-0.5">Feel stronger. Move freely. Grow confident.</div>
       </div>
     </div>
   </div>

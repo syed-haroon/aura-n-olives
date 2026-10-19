@@ -32,12 +32,26 @@
           :href="waLink"
           target="_blank"
           rel="noopener noreferrer"
-          class="hidden sm:inline-flex items-center gap-2 bg-forest-900 hover:bg-forest-800 text-cream-50 text-sm font-600 px-4 py-2.5 rounded-full transition-colors"
+          class="hidden lg:inline-flex items-center gap-2 border border-forest-900/20 hover:border-forest-900/40 text-forest-900 text-sm font-600 px-3.5 py-2.5 rounded-full transition-colors"
         >
           <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
             <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z" />
           </svg>
-          <span>Chat on WhatsApp</span>
+          <span>WhatsApp</span>
+        </a>
+
+        <a
+          :href="site.registrationUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hidden sm:inline-flex items-center gap-2 bg-gold-500 hover:bg-gold-400 text-forest-950 text-sm font-700 px-4 py-2.5 rounded-full transition-colors"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-4 w-4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+            <circle cx="9" cy="7" r="4" />
+            <path d="M19 8v6M22 11h-6" />
+          </svg>
+          <span>Register Now</span>
         </a>
 
         <button
@@ -91,12 +105,21 @@
         </a>
       </nav>
 
-      <div class="mt-8">
+      <div class="mt-8 space-y-3">
+        <a
+          :href="site.registrationUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="block w-full rounded-full bg-gold-500 px-4 py-3 text-center text-sm font-700 text-forest-950 hover:bg-gold-400"
+          @click="closeMenu"
+        >
+          Register Now
+        </a>
         <a
           :href="waLink"
           target="_blank"
           rel="noopener noreferrer"
-          class="block w-full rounded-full bg-forest-900 px-4 py-3 text-center text-sm font-600 text-cream-50 hover:bg-forest-800"
+          class="block w-full rounded-full border border-forest-900/20 px-4 py-3 text-center text-sm font-600 text-forest-900 hover:border-forest-900/40"
           @click="closeMenu"
         >
           Chat on WhatsApp

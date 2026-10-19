@@ -1,7 +1,4 @@
-/**
- * Central brand/contact config.
- * ⚠️ TODO before launch: replace whatsappNumber and instagramHandle with the real ones.
- */
+/** Central brand, contact and conversion links. */
 export const site = {
   brandName: 'Aura & Olives',
   tagline: 'Wellness Redefined',
@@ -11,9 +8,11 @@ export const site = {
   methodName: 'The Yogi Recomposition Method',
   email: 'seekreshma@gmail.com',
   whatsappNumber: '918861027220',
-  // TODO: replace with real Instagram handle
-  instagramHandle: '@auraandolives',
-  instagramUrl: 'https://instagram.com/auraandolives',
+  whatsappDisplay: '+91 88610 27220',
+  instagramHandle: '@reshma_auraandolives',
+  instagramUrl: 'https://www.instagram.com/reshma_auraandolives/',
+  linkedinUrl: 'https://www.linkedin.com/in/reshma-a-2071253a/',
+  registrationUrl: 'https://hub.auraandolives.com/web/checkout/6ad5099edd8af453d80ab85e',
   siteUrl: 'https://auraandolives.com',
   logo: '/assets/images/logo.png',
 };

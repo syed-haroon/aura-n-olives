@@ -7,6 +7,9 @@ export interface Testimonial {
 export const LINKEDIN_RECOMMENDATIONS_URL =
   'https://www.linkedin.com/in/reshma-a-2071253a/details/recommendations/?detailScreenTabIndex=0';
 
+export const INSTAGRAM_TESTIMONIALS_URL =
+  'https://www.instagram.com/stories/highlights/18102847013141612/';
+
 export const TESTIMONIALS: Testimonial[] = [
   {
     name: 'Sangeetha P L',
