@@ -2,7 +2,9 @@
 import Layout from "../../layouts/Layout.astro";
 import ProgramsGrid from "../../components/ProgramsGrid.astro";
 import CTASection from "../../components/CTASection.astro";
+import TestimonialSpotlight from "../../components/TestimonialSpotlight.astro";
 import { site } from "../../data/site";
+import { TESTIMONIALS } from "../../data/testimonials";
 ---
 
 <Layout
@@ -40,6 +42,12 @@ import { site } from "../../data/site";
   </section>
 
   <ProgramsGrid showHeader={false} />
+
+  <TestimonialSpotlight
+    testimonial={TESTIMONIALS[1]}
+    eyebrow="From a client"
+    title="Guidance that adapts to you"
+  />
 
   <CTASection
     heading="Not sure which is right for you?"

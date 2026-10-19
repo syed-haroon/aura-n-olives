@@ -3,8 +3,10 @@ import { Flower2, Wind, Apple, Dumbbell, Check } from "@lucide/astro";
 import Layout from "../../layouts/Layout.astro";
 import FaqSection from "../../components/FaqSection.astro";
 import CTASection from "../../components/CTASection.astro";
+import TestimonialSpotlight from "../../components/TestimonialSpotlight.astro";
 import { PROGRAMS, getAllProgramSlugs, getProgramBySlug, type Program } from "../../data/programs";
 import { site, buildWhatsAppLink } from "../../data/site";
+import { TESTIMONIALS } from "../../data/testimonials";
 
 export async function getStaticPaths() {
   return getAllProgramSlugs().map((slug) => ({
@@ -32,6 +34,7 @@ const PILLAR_ICONS: Record<string, any> = { Yoga: Flower2, Pranayama: Wind, "Qua
 const waLink = buildWhatsAppLink(`Hi Reshma, I'd like to know more about ${program.name}.`);
 
 const otherPrograms = PROGRAMS.filter((s) => s.slug !== program.slug);
+const testimonial = program.slug === 'wellness-warrior-challenge' ? TESTIMONIALS[1] : TESTIMONIALS[0];
 
 const PROGRAM_HERO_MEDIA: Record<string, { src: string; alt: string; position?: string }> = {
   'wellness-warrior-challenge': {
@@ -174,6 +177,13 @@ const pageOgImage = PROGRAM_OG_MEDIA[program.slug] ?? 'https://auraandolives.com
       </div>
     </div>
   </section>
+
+  <TestimonialSpotlight
+    testimonial={testimonial}
+    eyebrow="A client’s experience"
+    title={program.slug === 'wellness-warrior-challenge' ? 'A plan built around real life' : 'Practice with steady support'}
+    dark
+  />
 
   <FaqSection faqs={program.faqs} eyebrow="Before You Join" title={`Questions about ${program.shortName}`} bgClass="bg-cream-100" />
 

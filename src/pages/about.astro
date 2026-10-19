@@ -2,8 +2,10 @@
 import Layout from "../layouts/Layout.astro";
 import SectionHeader from "../components/SectionHeader.astro";
 import CTASection from "../components/CTASection.astro";
+import TestimonialSpotlight from "../components/TestimonialSpotlight.astro";
 import { HeartHandshake, FlaskConical, Sparkles } from "@lucide/astro";
 import { site } from "../data/site";
+import { TESTIMONIALS } from "../data/testimonials";
 
 const themes = [
   {
@@ -123,6 +125,12 @@ const codeOfHonor = [
       </div>
     </div>
   </section>
+
+  <TestimonialSpotlight
+    testimonial={TESTIMONIALS[2]}
+    eyebrow="Seen by her clients"
+    title="A coach who builds confidence"
+  />
 
   <section class="py-20 sm:py-28 bg-forest-950 text-cream-50">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">

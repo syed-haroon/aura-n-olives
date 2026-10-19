@@ -3,8 +3,10 @@ import Layout from "../../layouts/Layout.astro";
 import SectionHeader from "../../components/SectionHeader.astro";
 import CaseStudyCard from "../../components/CaseStudyCard.astro";
 import CTASection from "../../components/CTASection.astro";
+import { ExternalLink } from "@lucide/astro";
 import { CASE_STUDIES, DISCLAIMER } from "../../data/caseStudies";
 import { site } from "../../data/site";
+import { LINKEDIN_RECOMMENDATIONS_URL } from "../../data/testimonials";
 ---
 
 <Layout
@@ -57,6 +59,18 @@ import { site } from "../../data/site";
       >
         {DISCLAIMER}
       </p>
+
+      <div class="fade-in mt-6 text-center">
+        <a
+          href={LINKEDIN_RECOMMENDATIONS_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 text-sm font-600 text-forest-800 hover:text-gold-600"
+        >
+          Read client recommendations on LinkedIn
+          <ExternalLink class="h-4 w-4" />
+        </a>
+      </div>
     </div>
   </section>
 

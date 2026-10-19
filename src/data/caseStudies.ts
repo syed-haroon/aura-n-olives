@@ -26,7 +26,7 @@ export interface CaseStudy {
 }
 
 export const DISCLAIMER =
-  "Results are individual and vary from person to person. This is not medical advice and does not replace professional care. Always consult your physician before changing medication, diet or exercise routines.";
+  "Results are individual and vary from person to person. Guidance is provided from a professional background in yoga and nutrition, but it is not medical advice and does not replace care from a physician. Always consult your physician before changing medication or beginning a new diet or exercise routine.";
 
 export const CONSENT_NOTE =
   "Shared with the client's explicit consent. Names and identifying details are anonymized to protect their privacy.";
