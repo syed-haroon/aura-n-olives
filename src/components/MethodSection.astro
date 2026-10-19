@@ -4,10 +4,30 @@ import SectionHeader from "./SectionHeader.astro";
 import { site } from "../data/site";
 
 const pillars = [
-  { icon: Flower2, title: "Yoga", description: "Classical asana practice rooted in BKS Iyengar & Krishnamacharya lineage: precise alignment, not just movement." },
-  { icon: Wind, title: "Pranayama", description: "Breathwork for metabolism, energy and nervous-system recovery: the bridge between body and stillness." },
-  { icon: Apple, title: "Quantified Nutrition Diet", description: "Real macros, real gut science, vegetarian-friendly. No fad diets, no satvik-only guesswork." },
-  { icon: Dumbbell, title: "Strength Training", description: "Weights, Pilates and mobility drills integrated with asana, because a strong yogi is a safe yogi." },
+  {
+    icon: Flower2,
+    title: "Yoga",
+    description:
+      "Classical asana practice rooted in BKS Iyengar & Krishnamacharya lineage: precise alignment, not just movement.",
+  },
+  {
+    icon: Wind,
+    title: "Pranayama",
+    description:
+      "Breathwork for metabolism, energy and nervous-system recovery: the bridge between body and stillness.",
+  },
+  {
+    icon: Apple,
+    title: "Quantified Nutrition Diet",
+    description:
+      "Real macros, real gut science, vegetarian-friendly. No fad diets, no satvik-only guesswork.",
+  },
+  {
+    icon: Dumbbell,
+    title: "Strength Training",
+    description:
+      "Weights integrated with asana, because a strong yogi is a safe yogi.",
+  },
 ];
 ---
 
@@ -20,15 +40,21 @@ const pillars = [
     />
 
     <div class="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-      {pillars.map((pillar) => (
-        <div class="fade-in bg-white rounded-2xl border border-forest-900/8 p-6 hover:shadow-soft transition-shadow">
-          <div class="h-11 w-11 rounded-full bg-forest-900 text-gold-400 flex items-center justify-center mb-4">
-            <pillar.icon class="w-5 h-5" stroke-width={2} />
+      {
+        pillars.map((pillar) => (
+          <div class="fade-in bg-white rounded-2xl border border-forest-900/8 p-6 hover:shadow-soft transition-shadow">
+            <div class="h-11 w-11 rounded-full bg-forest-900 text-gold-400 flex items-center justify-center mb-4">
+              <pillar.icon class="w-5 h-5" stroke-width={2} />
+            </div>
+            <h3 class="font-display text-lg font-700 text-forest-950 mb-2">
+              {pillar.title}
+            </h3>
+            <p class="text-sm text-forest-700 leading-relaxed">
+              {pillar.description}
+            </p>
           </div>
-          <h3 class="font-display text-lg font-700 text-forest-950 mb-2">{pillar.title}</h3>
-          <p class="text-sm text-forest-700 leading-relaxed">{pillar.description}</p>
-        </div>
-      ))}
+        ))
+      }
     </div>
   </div>
 </section>
