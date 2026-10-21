@@ -68,6 +68,24 @@ h1, h2, h3, h4, h5, h6 {
   background-repeat: no-repeat;
 }
 
+@media (max-width: 639px) {
+  .hero-photo-bg::before {
+    background-position: center, center, 75% 25%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .about-hero::before {
+    background-color: #14261a;
+    background-image:
+      linear-gradient(90deg, #14261a 0%, #14261a 60%, rgba(20, 38, 26, 0) 83%),
+      linear-gradient(180deg, rgba(12, 24, 16, 0.72), rgba(12, 24, 16, 0.56) 45%, rgba(12, 24, 16, 0.74)),
+      url('/assets/images/heroes/about-hero-desktop.webp');
+    background-size: cover, cover, auto 100%;
+    background-position: center, center, right center;
+  }
+}
+
 .nav-blur {
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
