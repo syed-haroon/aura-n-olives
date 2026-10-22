@@ -1,5 +1,5 @@
 ---
-import { Mail, MessageCircle, UserPlus } from "@lucide/astro";
+import { Mail, MessageCircle } from "@lucide/astro";
 import { site, buildWhatsAppLink } from "../data/site";
 
 const waLink = buildWhatsAppLink(`Hi Reshma, I'd like to know more about ${site.brandName}.`);
@@ -50,15 +50,6 @@ const waLink = buildWhatsAppLink(`Hi Reshma, I'd like to know more about ${site.
           </a>
         </div>
       </div>
-    </div>
-
-    <div class="mb-10 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 border-y border-cream-50/10 py-6">
-      <a href={site.registrationUrl} target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 rounded-full bg-gold-500 px-5 py-3 text-sm font-700 text-forest-950 hover:bg-gold-400">
-        <UserPlus class="h-4 w-4" /> Register for a program
-      </a>
-      <a href={waLink} target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 rounded-full border border-cream-50/20 px-5 py-3 text-sm font-600 text-cream-50 hover:border-gold-400/60 hover:text-gold-300">
-        <MessageCircle class="h-4 w-4" /> Chat on WhatsApp
-      </a>
     </div>
 
     <div class="text-xs flex flex-col gap-2 text-center md:flex-row md:items-center md:justify-between md:text-left text-forest-400">
