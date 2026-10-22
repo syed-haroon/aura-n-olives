@@ -29,12 +29,12 @@ import { LINKEDIN_RECOMMENDATIONS_URL } from "../../data/testimonials";
         >
       </div>
       <h1
-        class="fade-in font-display text-4xl sm:text-5xl font-800 leading-[1.1] text-cream-50"
+        class="fade-in mx-auto max-w-3xl font-display text-4xl sm:text-5xl font-800 leading-[1.1] text-cream-50"
       >
         Transformation you can measure.
       </h1>
       <p
-        class="fade-in mt-6 text-cream-200/85 leading-relaxed text-base sm:text-lg"
+        class="fade-in mx-auto mt-6 max-w-xl text-base leading-relaxed text-cream-200/85 sm:text-lg"
       >
         Every case study here is real client data, tracked over time and shared
         with their explicit consent.
@@ -48,9 +48,17 @@ import { LINKEDIN_RECOMMENDATIONS_URL } from "../../data/testimonials";
         eyebrow="Case Studies"
         title="Browse real, measured transformations"
         description="Each story shows the method in action: condition, timeline, and the exact numbers that changed."
+        descriptionClass="max-w-xl mx-auto"
       />
 
-      <div class="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class:list={[
+        "mt-14 grid gap-5",
+        CASE_STUDIES.length === 1
+          ? "max-w-2xl mx-auto"
+          : CASE_STUDIES.length === 2
+            ? "sm:grid-cols-2 max-w-3xl mx-auto"
+            : "sm:grid-cols-2 lg:grid-cols-3",
+      ]}>
         {CASE_STUDIES.map((study) => <CaseStudyCard study={study} />)}
       </div>
 

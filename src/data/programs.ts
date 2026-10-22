@@ -82,11 +82,11 @@ export const PROGRAMS: Program[] = [
     idealFor: [
       'Yoga teachers who feel their body no longer matches their credentials',
       'Yoga aspirants, enthusiasts preparing for TTC who want to walk in strong, not body-conscious',
-      'Teachers dealing with obesity, "skinny fat", inflexibility or low strength',
+      'Teachers dealing with obesity, “skinny fat”, inflexibility or low strength',
       'Anyone who has tried diets and generic fitness plans that ignored their yogic lifestyle',
     ],
     painPoints: [
-      'Belly fat or a "skinny fat" physique despite teaching yoga daily',
+      'Belly fat or a “skinny fat” physique despite teaching yoga daily',
       "Can't confidently demonstrate arm balances, inversions or strength-based asanas",
       'Stiffness, low stamina, or pelvic floor weakness',
       'Confusion between fad diets, and real nutrition science',
