@@ -6,6 +6,8 @@ export const site = {
   founderTitle: 'Founder & Chief Transformation Mentor',
   communityName: 'Yogi Recomposition Lab',
   methodName: 'The Yogi Recomposition Method',
+  mission: 'To make health a daily practice, rather than a crisis response.',
+  vision: 'To positively transform 10,000 lives in my lifetime by empowering people to take ownership of their health and build stronger, healthier and more fulfilling lives.',
   email: 'seekreshma@gmail.com',
   whatsappNumber: '918861027220',
   whatsappDisplay: '+91 88610 27220',
