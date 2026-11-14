@@ -2,6 +2,7 @@
 import SectionHeader from "./SectionHeader.astro";
 import CaseStudyCard from "./CaseStudyCard.astro";
 import { CASE_STUDIES } from "../data/caseStudies";
+import { ArrowRight } from "@lucide/astro";
 
 const featured = CASE_STUDIES.slice(0, 3);
 ---
@@ -21,7 +22,7 @@ const featured = CASE_STUDIES.slice(0, 3);
     <div class="fade-in text-center mt-10">
       <a href="/results" class="inline-flex items-center gap-2 text-forest-900 font-600 text-sm hover:text-gold-600 transition-colors">
         View all case studies
-        <span aria-hidden="true">→</span>
+        <ArrowRight class="h-4 w-4" aria-hidden="true" />
       </a>
     </div>
   </div>

@@ -1,5 +1,5 @@
 ---
-import { ArrowDown, ArrowUp } from "@lucide/astro";
+import { ArrowDown, ArrowRight, ArrowUp } from "@lucide/astro";
 import type { CaseStudy } from "../data/caseStudies";
 
 interface Props {
@@ -29,7 +29,7 @@ const ArrowIcon = study.changeDirection === 'down' ? ArrowDown : ArrowUp;
     <span>{study.clientLabel} · {study.duration}</span>
     <span class="inline-flex items-center gap-1.5 text-forest-900 font-600 group-hover:text-gold-600 transition-colors">
       Read the case study
-      <span class="transition-transform group-hover:translate-x-1" aria-hidden="true">→</span>
+      <ArrowRight class="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
     </span>
   </div>
 </a>

@@ -1,5 +1,6 @@
 ---
 import { site } from "../data/site";
+import { ArrowRight } from "@lucide/astro";
 ---
 
 <section class="py-20 sm:py-28 bg-forest-950 text-cream-50 overflow-hidden">
@@ -40,7 +41,7 @@ import { site } from "../data/site";
         class="mt-7 inline-flex items-center gap-2 text-gold-400 font-600 text-sm hover:text-gold-300 transition-colors"
       >
         Read {site.founderName.split(' ')[0]}'s full story
-        <span aria-hidden="true">→</span>
+        <ArrowRight class="h-4 w-4" aria-hidden="true" />
       </a>
     </div>
   </div>

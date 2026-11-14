@@ -1,5 +1,5 @@
 ---
-import { Flame, HeartHandshake, BadgeCheck, Users } from "@lucide/astro";
+import { ArrowRight, Flame, HeartHandshake, BadgeCheck, Users } from "@lucide/astro";
 import type { Program } from "../data/programs";
 
 interface Props {
@@ -30,6 +30,6 @@ const accentClasses: Record<string, string> = {
   <p class="text-sm text-forest-700 leading-relaxed mb-5 flex-1">{program.cardBlurb}</p>
   <span class="inline-flex items-center gap-2 text-forest-900 font-600 text-sm group-hover:text-gold-600 transition-colors">
     Learn more
-    <span class="transition-transform group-hover:translate-x-1" aria-hidden="true">→</span>
+    <ArrowRight class="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
   </span>
 </a>

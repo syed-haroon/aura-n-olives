@@ -59,9 +59,10 @@
 
       <button
         type="submit"
-        class="w-full bg-gold-500 hover:bg-gold-600 text-forest-950 font-700 py-3 rounded-xl transition-colors text-sm"
+        class="inline-flex w-full items-center justify-center gap-2 bg-gold-500 hover:bg-gold-600 text-forest-950 font-700 py-3 rounded-xl transition-colors text-sm"
       >
-        {{ ctaLabel }} →
+        {{ ctaLabel }}
+        <ArrowRight class="h-4 w-4" aria-hidden="true" />
       </button>
     </form>
 
@@ -71,6 +72,7 @@
 
 <script setup>
 import { ref, computed } from 'vue';
+import { ArrowRight } from '@lucide/vue';
 import { buildWhatsAppLink } from '../data/site';
 import SuccessToast from './SuccessToast.vue';
 
